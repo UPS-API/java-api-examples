@@ -1,0 +1,726 @@
+{
+  "RateResponse": {
+    "Response": {
+      "ResponseStatus": {
+        "Code": "1",
+        "Description": "Success"
+      },
+      "Alert": [
+        {
+          "Code": "110971",
+          "Description": "Your invoice may vary from the displayed reference rates"
+        }
+      ],
+      "AlertDetail": null,
+      "TransactionReference": {
+        "CustomerContext": "testing"
+      }
+    },
+    "RatedShipment": [
+      {
+        "Service": {
+          "Code": "14",
+          "Description": ""
+        },
+        "RatedShipmentAlert": {
+          "Code": "110971",
+          "Description": "Your invoice may vary from the displayed reference rates"
+        },
+        "BillingWeight": {
+          "UnitOfMeasurement": {
+            "Code": "LBS",
+            "Description": "Pounds"
+          },
+          "Weight": "1.0"
+        },
+        "TransportationCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "117.15"
+        },
+        "BaseServiceCharge": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "ServiceOptionsCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "TotalCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "117.15"
+        },
+        "GuaranteedDelivery": {
+          "BusinessDaysInTransit": "1",
+          "DeliveryByTime": "8:30 A.M."
+        },
+        "RatedPackage": {
+          "TransportationCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "117.15"
+          },
+          "BaseServiceCharge": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "97.42"
+          },
+          "ServiceOptionsCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "0.00"
+          },
+          "ItemizedCharges": [
+            {
+              "Code": "376",
+              "CurrencyCode": "USD",
+              "MonetaryValue": "0.00",
+              "SubType": "Suburban"
+            },
+            {
+              "Code": "375",
+              "CurrencyCode": "USD",
+              "MonetaryValue": "19.73"
+            }
+          ],
+          "TotalCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "117.15"
+          },
+          "Weight": "1.0",
+          "BillingWeight": {
+            "UnitOfMeasurement": {
+              "Code": "LBS",
+              "Description": "Pounds"
+            },
+            "Weight": "1.0"
+          }
+        },
+        "TimeInTransit": {
+          "PickupDate": "20230101",
+          "PackageBillType": "03",
+          "Disclaimer": "Services listed as guaranteed are backed by a money-back guarantee for transportation charges only. UPS guarantees the day of delivery for every ground package you ship to any address within all 50 states and Puerto Rico. See Terms and Conditions in the Service Guide for details.",
+          "ServiceSummary": {
+            "Service": {
+              "Description": "UPS Next Day Air Early"
+            },
+            "EstimatedArrival": {
+              "Arrival": {
+                "Date": "20230104",
+                "Time": "083000"
+              },
+              "BusinessDaysInTransit": "1",
+              "Pickup": {
+                "Date": "20230103",
+                "Time": "200000"
+              },
+              "DayOfWeek": "WED",
+              "CustomerCenterCutoff": "180000"
+            },
+            "GuaranteedIndicator": "",
+            "SaturdayDelivery": "0",
+            "SundayDelivery": "0"
+          }
+        }
+      },
+      {
+        "Service": {
+          "Code": "01",
+          "Description": ""
+        },
+        "RatedShipmentAlert": {
+          "Code": "110971",
+          "Description": "Your invoice may vary from the displayed reference rates"
+        },
+        "BillingWeight": {
+          "UnitOfMeasurement": {
+            "Code": "LBS",
+            "Description": "Pounds"
+          },
+          "Weight": "1.0"
+        },
+        "TransportationCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "81.07"
+        },
+        "BaseServiceCharge": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "ServiceOptionsCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "TotalCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "81.07"
+        },
+        "GuaranteedDelivery": {
+          "BusinessDaysInTransit": "1",
+          "DeliveryByTime": "10:30 A.M."
+        },
+        "RatedPackage": {
+          "TransportationCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "81.07"
+          },
+          "BaseServiceCharge": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "67.42"
+          },
+          "ServiceOptionsCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "0.00"
+          },
+          "ItemizedCharges": [
+            {
+              "Code": "376",
+              "CurrencyCode": "USD",
+              "MonetaryValue": "0.00",
+              "SubType": "Suburban"
+            },
+            {
+              "Code": "375",
+              "CurrencyCode": "USD",
+              "MonetaryValue": "13.65"
+            }
+          ],
+          "TotalCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "81.07"
+          },
+          "Weight": "1.0",
+          "BillingWeight": {
+            "UnitOfMeasurement": {
+              "Code": "LBS",
+              "Description": "Pounds"
+            },
+            "Weight": "1.0"
+          }
+        },
+        "TimeInTransit": {
+          "PickupDate": "20230101",
+          "PackageBillType": "03",
+          "Disclaimer": "Services listed as guaranteed are backed by a money-back guarantee for transportation charges only. UPS guarantees the day of delivery for every ground package you ship to any address within all 50 states and Puerto Rico. See Terms and Conditions in the Service Guide for details.",
+          "ServiceSummary": {
+            "Service": {
+              "Description": "UPS Next Day Air"
+            },
+            "EstimatedArrival": {
+              "Arrival": {
+                "Date": "20230104",
+                "Time": "103000"
+              },
+              "BusinessDaysInTransit": "1",
+              "Pickup": {
+                "Date": "20230103",
+                "Time": "200000"
+              },
+              "DayOfWeek": "WED",
+              "CustomerCenterCutoff": "180000"
+            },
+            "GuaranteedIndicator": "",
+            "SaturdayDelivery": "0",
+            "SundayDelivery": "0"
+          }
+        }
+      },
+      {
+        "Service": {
+          "Code": "13",
+          "Description": ""
+        },
+        "RatedShipmentAlert": {
+          "Code": "110971",
+          "Description": "Your invoice may vary from the displayed reference rates"
+        },
+        "BillingWeight": {
+          "UnitOfMeasurement": {
+            "Code": "LBS",
+            "Description": "Pounds"
+          },
+          "Weight": "1.0"
+        },
+        "TransportationCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "70.26"
+        },
+        "BaseServiceCharge": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "ServiceOptionsCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "TotalCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "70.26"
+        },
+        "GuaranteedDelivery": {
+          "BusinessDaysInTransit": "1",
+          "DeliveryByTime": "3:00 P.M."
+        },
+        "RatedPackage": {
+          "TransportationCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "70.26"
+          },
+          "BaseServiceCharge": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "58.43"
+          },
+          "ServiceOptionsCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "0.00"
+          },
+          "ItemizedCharges": [
+            {
+              "Code": "376",
+              "CurrencyCode": "USD",
+              "MonetaryValue": "0.00",
+              "SubType": "Suburban"
+            },
+            {
+              "Code": "375",
+              "CurrencyCode": "USD",
+              "MonetaryValue": "11.83"
+            }
+          ],
+          "TotalCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "70.26"
+          },
+          "Weight": "1.0",
+          "BillingWeight": {
+            "UnitOfMeasurement": {
+              "Code": "LBS",
+              "Description": "Pounds"
+            },
+            "Weight": "1.0"
+          }
+        },
+        "TimeInTransit": {
+          "PickupDate": "20230101",
+          "PackageBillType": "03",
+          "Disclaimer": "Services listed as guaranteed are backed by a money-back guarantee for transportation charges only. UPS guarantees the day of delivery for every ground package you ship to any address within all 50 states and Puerto Rico. See Terms and Conditions in the Service Guide for details.",
+          "ServiceSummary": {
+            "Service": {
+              "Description": "UPS Next Day Air Saver"
+            },
+            "EstimatedArrival": {
+              "Arrival": {
+                "Date": "20230104",
+                "Time": "230000"
+              },
+              "BusinessDaysInTransit": "1",
+              "Pickup": {
+                "Date": "20230103",
+                "Time": "200000"
+              },
+              "DayOfWeek": "WED",
+              "CustomerCenterCutoff": "180000"
+            },
+            "GuaranteedIndicator": "",
+            "SaturdayDelivery": "0",
+            "SundayDelivery": "0"
+          }
+        }
+      },
+      {
+        "Service": {
+          "Code": "59",
+          "Description": ""
+        },
+        "RatedShipmentAlert": {
+          "Code": "110971",
+          "Description": "Your invoice may vary from the displayed reference rates"
+        },
+        "BillingWeight": {
+          "UnitOfMeasurement": {
+            "Code": "LBS",
+            "Description": "Pounds"
+          },
+          "Weight": "1.0"
+        },
+        "TransportationCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "31.43"
+        },
+        "BaseServiceCharge": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "ServiceOptionsCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "TotalCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "31.43"
+        },
+        "GuaranteedDelivery": {
+          "BusinessDaysInTransit": "2",
+          "DeliveryByTime": "10:30 A.M."
+        },
+        "RatedPackage": {
+          "TransportationCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "31.43"
+          },
+          "BaseServiceCharge": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "26.14"
+          },
+          "ServiceOptionsCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "0.00"
+          },
+          "ItemizedCharges": [
+            {
+              "Code": "376",
+              "CurrencyCode": "USD",
+              "MonetaryValue": "0.00",
+              "SubType": "Suburban"
+            },
+            {
+              "Code": "375",
+              "CurrencyCode": "USD",
+              "MonetaryValue": "5.29"
+            }
+          ],
+          "TotalCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "31.43"
+          },
+          "Weight": "1.0",
+          "BillingWeight": {
+            "UnitOfMeasurement": {
+              "Code": "LBS",
+              "Description": "Pounds"
+            },
+            "Weight": "1.0"
+          }
+        },
+        "TimeInTransit": {
+          "PickupDate": "20230101",
+          "PackageBillType": "03",
+          "Disclaimer": "Services listed as guaranteed are backed by a money-back guarantee for transportation charges only. UPS guarantees the day of delivery for every ground package you ship to any address within all 50 states and Puerto Rico. See Terms and Conditions in the Service Guide for details.",
+          "ServiceSummary": {
+            "Service": {
+              "Description": "UPS 2nd Day Air A.M."
+            },
+            "EstimatedArrival": {
+              "Arrival": {
+                "Date": "20230105",
+                "Time": "230000"
+              },
+              "BusinessDaysInTransit": "2",
+              "Pickup": {
+                "Date": "20230103",
+                "Time": "200000"
+              },
+              "DayOfWeek": "THU",
+              "CustomerCenterCutoff": "180000"
+            },
+            "SaturdayDelivery": "0",
+            "SundayDelivery": "0"
+          }
+        }
+      },
+      {
+        "Service": {
+          "Code": "02",
+          "Description": ""
+        },
+        "RatedShipmentAlert": {
+          "Code": "110971",
+          "Description": "Your invoice may vary from the displayed reference rates"
+        },
+        "BillingWeight": {
+          "UnitOfMeasurement": {
+            "Code": "LBS",
+            "Description": "Pounds"
+          },
+          "Weight": "1.0"
+        },
+        "TransportationCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "27.74"
+        },
+        "BaseServiceCharge": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "ServiceOptionsCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "TotalCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "27.74"
+        },
+        "GuaranteedDelivery": {
+          "BusinessDaysInTransit": "2"
+        },
+        "RatedPackage": {
+          "TransportationCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "27.74"
+          },
+          "BaseServiceCharge": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "23.07"
+          },
+          "ServiceOptionsCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "0.00"
+          },
+          "ItemizedCharges": [
+            {
+              "Code": "376",
+              "CurrencyCode": "USD",
+              "MonetaryValue": "0.00",
+              "SubType": "Suburban"
+            },
+            {
+              "Code": "375",
+              "CurrencyCode": "USD",
+              "MonetaryValue": "4.67"
+            }
+          ],
+          "TotalCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "27.74"
+          },
+          "Weight": "1.0",
+          "BillingWeight": {
+            "UnitOfMeasurement": {
+              "Code": "LBS",
+              "Description": "Pounds"
+            },
+            "Weight": "1.0"
+          }
+        },
+        "TimeInTransit": {
+          "PickupDate": "20230101",
+          "PackageBillType": "03",
+          "Disclaimer": "Services listed as guaranteed are backed by a money-back guarantee for transportation charges only. UPS guarantees the day of delivery for every ground package you ship to any address within all 50 states and Puerto Rico. See Terms and Conditions in the Service Guide for details.",
+          "ServiceSummary": {
+            "Service": {
+              "Description": "UPS 2nd Day Air"
+            },
+            "EstimatedArrival": {
+              "Arrival": {
+                "Date": "20230105",
+                "Time": "230000"
+              },
+              "BusinessDaysInTransit": "2",
+              "Pickup": {
+                "Date": "20230103",
+                "Time": "200000"
+              },
+              "DayOfWeek": "THU",
+              "CustomerCenterCutoff": "180000"
+            },
+            "SaturdayDelivery": "0",
+            "SundayDelivery": "0"
+          }
+        }
+      },
+      {
+        "Service": {
+          "Code": "03",
+          "Description": ""
+        },
+        "RatedShipmentAlert": {
+          "Code": "110971",
+          "Description": "Your invoice may vary from the displayed reference rates"
+        },
+        "BillingWeight": {
+          "UnitOfMeasurement": {
+            "Code": "LBS",
+            "Description": "Pounds"
+          },
+          "Weight": "1.0"
+        },
+        "TransportationCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "12.49"
+        },
+        "BaseServiceCharge": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "ServiceOptionsCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "TotalCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "12.49"
+        },
+        "RatedPackage": {
+          "TransportationCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "12.49"
+          },
+          "BaseServiceCharge": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "10.65"
+          },
+          "ServiceOptionsCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "0.00"
+          },
+          "ItemizedCharges": [
+            {
+              "Code": "376",
+              "CurrencyCode": "USD",
+              "MonetaryValue": "0.00",
+              "SubType": "Suburban"
+            },
+            {
+              "Code": "375",
+              "CurrencyCode": "USD",
+              "MonetaryValue": "1.84"
+            }
+          ],
+          "TotalCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "12.49"
+          },
+          "Weight": "1.0",
+          "BillingWeight": {
+            "UnitOfMeasurement": {
+              "Code": "LBS",
+              "Description": "Pounds"
+            },
+            "Weight": "1.0"
+          }
+        },
+        "TimeInTransit": {
+          "PickupDate": "20230101",
+          "PackageBillType": "03",
+          "Disclaimer": "Services listed as guaranteed are backed by a money-back guarantee for transportation charges only. UPS guarantees the day of delivery for every ground package you ship to any address within all 50 states and Puerto Rico. See Terms and Conditions in the Service Guide for details.",
+          "ServiceSummary": {
+            "Service": {
+              "Description": "UPS Ground"
+            },
+            "EstimatedArrival": {
+              "Arrival": {
+                "Date": "20230105",
+                "Time": "230000"
+              },
+              "BusinessDaysInTransit": "2",
+              "Pickup": {
+                "Date": "20230103",
+                "Time": "200000"
+              },
+              "DayOfWeek": "THU",
+              "CustomerCenterCutoff": "170000"
+            },
+            "SaturdayDelivery": "0",
+            "SundayDelivery": "0"
+          }
+        }
+      },
+      {
+        "Service": {
+          "Code": "12",
+          "Description": ""
+        },
+        "RatedShipmentAlert": {
+          "Code": "110971",
+          "Description": "Your invoice may vary from the displayed reference rates"
+        },
+        "BillingWeight": {
+          "UnitOfMeasurement": {
+            "Code": "LBS",
+            "Description": "Pounds"
+          },
+          "Weight": "1.0"
+        },
+        "TransportationCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "20.25"
+        },
+        "BaseServiceCharge": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "ServiceOptionsCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "TotalCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "20.25"
+        },
+        "GuaranteedDelivery": {
+          "BusinessDaysInTransit": "3"
+        },
+        "RatedPackage": {
+          "TransportationCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "20.25"
+          },
+          "BaseServiceCharge": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "16.84"
+          },
+          "ServiceOptionsCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "0.00"
+          },
+          "ItemizedCharges": [
+            {
+              "Code": "376",
+              "CurrencyCode": "USD",
+              "MonetaryValue": "0.00",
+              "SubType": "Suburban"
+            },
+            {
+              "Code": "375",
+              "CurrencyCode": "USD",
+              "MonetaryValue": "3.41"
+            }
+          ],
+          "TotalCharges": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "20.25"
+          },
+          "Weight": "1.0",
+          "BillingWeight": {
+            "UnitOfMeasurement": {
+              "Code": "LBS",
+              "Description": "Pounds"
+            },
+            "Weight": "1.0"
+          }
+        },
+        "TimeInTransit": {
+          "PickupDate": "20230101",
+          "PackageBillType": "03",
+          "Disclaimer": "Services listed as guaranteed are backed by a money-back guarantee for transportation charges only. UPS guarantees the day of delivery for every ground package you ship to any address within all 50 states and Puerto Rico. See Terms and Conditions in the Service Guide for details.",
+          "ServiceSummary": {
+            "Service": {
+              "Description": "UPS 3 Day Select"
+            },
+            "EstimatedArrival": {
+              "Arrival": {
+                "Date": "20230106",
+                "Time": "230000"
+              },
+              "BusinessDaysInTransit": "3",
+              "Pickup": {
+                "Date": "20230103",
+                "Time": "200000"
+              },
+              "DayOfWeek": "FRI",
+              "CustomerCenterCutoff": "170000"
+            },
+            "SaturdayDelivery": "0",
+            "SundayDelivery": "0"
+          }
+        }
+      }
+    ]
+  }
+}

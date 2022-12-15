@@ -1,0 +1,28 @@
+{
+  "PickupRateRequest" : {
+    "Request" : {
+      "RequestOption" : "01",
+      "SubVersion" : "1701",
+      "TransactionReference" : {
+        "CustomerContext" : "Verify Success response is returned with  Published charge  and warning 9500717 code for rate request with NBS user."
+      }
+    },
+    "PickupAddress" : {
+      "AddressLine" : "Pickup Address",
+      "City" : "Louisville",
+      "StateProvince" : "GA",
+      "PostalCode" : "30076",
+      "CountryCode" : "US",
+      "ResidentialIndicator" : "Y"
+    },
+    "AlternateAddressIndicator" : "Y",
+    "ServiceDateOption" : "02",
+    "PickupDateInfo" : {
+      "CloseTime" : "1700",
+      "ReadyTime" : "0900",
+      "PickupDate" : "20220524"
+    },
+    "TaxInformationIndicator" : "Y",
+    "UserLevelDiscountIndicator" : "Y"
+  }
+}

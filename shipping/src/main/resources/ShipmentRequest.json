@@ -1,0 +1,96 @@
+{
+  "ShipmentRequest": {
+    "Request": {
+      "SubVersion": "1801",
+      "RequestOption": "nonvalidate",
+      "TransactionReference": {
+        "CustomerContext": ""
+      }
+    },
+    "Shipment": {
+      "Description": "1206 PTR",
+      "Shipper": {
+        "Name": "US MEDI/HOME CARE",
+        "AttentionName": "MAQUOKETA MEDICARE",
+        "TaxIdentificationNumber": "456789",
+        "Phone": {
+          "Number": "1234567890"
+        },
+        "ShipperNumber": "WA8290",
+        "Address": {
+          "AddressLine": "435 SOUTH ST",
+          "City": "Albany",
+          "StateProvinceCode": "NY",
+          "PostalCode": "12211",
+          "CountryCode": "US"
+        }
+      },
+      "ShipTo": {
+        "Name": "TEST USER",
+        "AttentionName": "TEST USER",
+        "Phone": {
+          "Number": "1234567890"
+        },
+        "FaxNumber": "1234567999",
+        "TaxIdentificationNumber": "456999",
+        "Address": {
+          "AddressLine": "355 West San Fernando Street",
+          "City": "San Jose",
+          "StateProvinceCode": "CA",
+          "PostalCode": "95113",
+          "CountryCode": "US"
+        }
+      },
+      "ShipFrom": {
+        "Name": "US MEDI/HOME CARE",
+        "AttentionName": "MAQUOKETA MEDI/HOME CARE",
+        "Phone": {
+          "Number": "1234567890"
+        },
+        "FaxNumber": "1234567999",
+        "TaxIdentificationNumber": "456999",
+        "Address": {
+          "AddressLine": "2311 YORK ROAD",
+          "City": "Albany",
+          "StateProvinceCode": "NY",
+          "PostalCode": "12211",
+          "CountryCode": "US"
+        }
+      },
+      "PaymentInformation": {
+        "ShipmentCharge": {
+          "Type": "01",
+          "BillShipper": {
+            "AccountNumber": "WA8290"
+          }
+        }
+      },
+      "Service": {
+        "Code": "01",
+        "Description": "Expedited"
+      },
+      "Package": {
+        "Description": "International Goods",
+        "Packaging": {
+          "Code": "02"
+        },
+        "PackageWeight": {
+          "UnitOfMeasurement": {
+            "Code": "LBS"
+          },
+          "Weight": "10"
+        }
+      },
+      "RatingMethodRequestedIndicator": "",
+      "TaxInformationIndicator": "",
+      "ShipmentRatingOptions": {
+        "NegotiatedRatesIndicator": ""
+      }
+    },
+    "LabelSpecification": {
+      "LabelImageFormat": {
+        "Code": "GIF"
+      }
+    }
+  }
+}

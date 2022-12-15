@@ -1,0 +1,70 @@
+{
+  "PickupCreationRequest": {
+    "Request": {
+      "TransactionReference": {
+        "CustomerContext": "d9 Different Client-- shipper account payment method -"
+      }
+    },
+    "RatePickupIndicator": "N",
+    "Shipper": {
+      "Account": {
+        "AccountNumber": "<your Account Number>",
+        "AccountCountryCode": "US"
+      }
+    },
+    "PickupDateInfo": {
+      "CloseTime": "1400",
+      "ReadyTime": "0500",
+      "PickupDate": "20221130"
+    },
+    "PickupAddress": {
+      "CompanyName": "Pickup Proxy",
+      "ContactName": "Pickup Manager",
+      "AddressLine": "Pickup Address",
+      "Room": "R01",
+      "Floor": "2",
+      "City": "Allendale",
+      "StateProvince": "NJ",
+      "Urbanization": "",
+      "PostalCode": "07401",
+      "CountryCode": "US",
+      "ResidentialIndicator": "Y",
+      "PickupPoint": "Lobby",
+      "Phone": {
+        "Number": "123456789",
+        "Extension": "1234"
+      }
+    },
+    "AlternateAddressIndicator": "Y",
+    "PickupPiece": [
+      {
+        "ServiceCode": "001",
+        "Quantity": "27",
+        "DestinationCountryCode": "US",
+        "ContainerCode": "01"
+      },
+      {
+        "ServiceCode": "012",
+        "Quantity": "4",
+        "DestinationCountryCode": "US",
+        "ContainerCode": "01"
+      }
+    ],
+    "TotalWeight": {
+      "Weight": "5.5",
+      "UnitOfMeasurement": "LBS"
+    },
+    "OverweightIndicator": "N",
+    "PaymentMethod": "01",
+    "SpecialInstruction": "Jias Test ",
+    "ReferenceNumber": "CreatePickupRefJia",
+    "Notification": {
+      "ConfirmationEmailAddress": "<your Confirmation Email Address> ",
+      "UndeliverableEmailAddress": "<your Undeliverable Email Address>"
+    },
+    "CSR": {
+      "ProfileId": "1 Q83 122",
+      "ProfileCountryCode": "US"
+    }
+  }
+}

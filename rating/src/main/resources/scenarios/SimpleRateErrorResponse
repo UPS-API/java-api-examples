@@ -1,0 +1,10 @@
+{
+  "response": {
+    "errors": [
+      {
+        "code": "111600",
+        "message": "BillShipper payment method is not valid for this shipment."
+      }
+    ]
+  }
+}

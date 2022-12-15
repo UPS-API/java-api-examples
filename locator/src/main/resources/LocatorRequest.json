@@ -1,0 +1,50 @@
+{
+  "Request": {
+    "TransactionReference": {
+        "CustomerContext": ""
+    },
+    "RequestAction": "Locator"
+},
+"OriginAddress": {
+    "AddressKeyFormat": {
+        "AddressLine": "123 Main St",
+        "PoliticalDivision2": "Atlanta",
+        "PoliticalDivision1": "PE",
+        "PostcodePrimaryLow": "30005",
+        "PostcodeExtendedLow": "30005",
+        "CountryCode": "US"
+    },
+    "MaximumListSize": "10"
+},
+"Translate": {
+    "Locale": "en_US"
+},
+"UnitOfMeasurement": {
+    "Code": "MI"
+},
+"LocationSearchCriteria": {
+    "SearchOption": 
+        {
+            "OptionType": {
+                "Code": "01"
+            },
+            "OptionCode": {
+                "Code": "001"
+            },
+            "Relation": {
+                "Code": "01"
+            }
+        },
+    "MaximumListSize": "10",
+    "SearchRadius": "75",
+    "ServiceSearch": {
+        "Time": "1030",
+        "ServiceCode": {
+            "Code": "01"
+        }
+    }
+},
+"SortCriteria": {
+    "SortType": "01"
+}
+}

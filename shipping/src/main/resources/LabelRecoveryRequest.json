@@ -1,0 +1,30 @@
+{
+  "LabelRecoveryRequest": {
+    "Request": {
+      "RequestOption": "Non_Validate",
+      "SubVersion": "1903",
+      "TransactionReference": {
+        "CustomerContext": ""
+      }
+    },
+    "LabelSpecification": {
+      "HTTPUserAgent": "Mozilla/4.5",
+      "LabelImageFormat": {
+        "Code": "ZPL"
+      },
+      "LabelStockSize": {
+        "Height": "6",
+        "Width": "4"
+      }
+    },
+    "Translate": {
+      "LanguageCode": "eng",
+      "DialectCode": "US",
+      "Code": "01"
+    },
+    "LabelDelivery": {
+      "LabelLinkIndicator": ""
+    },
+    "TrackingNumber": "<youre Tracking Number>"
+  }
+}

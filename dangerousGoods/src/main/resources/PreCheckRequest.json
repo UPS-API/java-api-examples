@@ -1,0 +1,68 @@
+{
+  "AcceptanceAuditPreCheckRequest": {
+    "Request": {
+      "RequestOption": "Request",
+      "TransactionReference": {
+        "CustomerContext": "",
+        "TransactionIdentifier": "TransactionIdentifier"
+      }
+    },
+    "OriginRecordTransactionTimestamp": "",
+    "Shipment": {
+      "ShipperNumber": "<Shipper Number>",
+      "ShipFromAddress": {
+        "AddressLine": "123 Main st",
+        "City": "Atlanta",
+        "StateProvinceCode": "GA",
+        "PostalCode": "7603",
+        "CountryCode": "US"
+      },
+      "ShipToAddress": {
+       "AddressLine": "125 Main st",
+        "City": "Atlanta",
+        "StateProvinceCode": "GA",
+        "PostalCode": "1831",
+        "CountryCode": "BE"
+      },
+      "Service": {
+        "Code": "01",
+        "Description": "GROUND "
+      },
+      "RegulationSet": "<Regulation Set>",
+      "Package": {
+        "PackageIdentifier": "12",
+        "PackageWeight": {
+          "Weight": "12",
+          "UnitOfMeasurement": {
+            "Code": "KGS",
+            "Description": "KILOS"
+          }
+        },
+        "QValue": "0",
+        "OverPackedIndicator": "I",
+        "TransportationMode": "PAX",
+        "EmergencyContact": "SELF",
+        "ChemicalRecord": {
+          "ChemicalRecordIdentifier": "12",
+          "ReportableQuantity": "RQ",
+          "ClassDivisionNumber": "3",
+          "SubRiskClass": "            ",
+          "IDNumber": "<ID Number>",
+          "PackagingGroupType": "III",
+          "Quantity": "10",
+          "UOM": "KGS",
+          "PackagingInstructionCode": "Y344",
+          "ProperShippingName": "<Proper Shipping Name>",
+          "TechnicalName": "            ",
+          "AdditionalDescription": "N",
+          "PackagingType": "<Packaging Type>",
+          "HazardLabelRequired": "LABEL IT",
+          "PackagingTypeQuantity": "22",
+          "CommodityRegulatedLevelCode": "LQ",
+          "TransportCategory": "3",
+          "TunnelRestrictionCode": "1"
+        }
+      }
+    }
+  }
+}

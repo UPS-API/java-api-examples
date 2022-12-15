@@ -1,0 +1,14 @@
+{
+  "originCountryCode": "US",
+  "originPostalCode": "11023",
+  "destinationCountryCode": "US",
+  "destinationTownName": "",
+  "destinationPostalCode": "03104",
+  "weight": "10.5",
+  "weightUnitOfMeasure": "LBS",
+  "shipDate": "2022-10-07",
+  "shipTime": "",
+  "residentialIndicator": "",
+  "avvFlag": true,
+  "numberOfPackages": "1"
+}

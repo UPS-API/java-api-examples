@@ -1,0 +1,24 @@
+{
+    "XAVRequest": {
+        "Request": {
+            "RequestOption": "3",
+            "TransactionReference": {
+                "CustomerContext": "Verify XAV Request returns Success Response for Residential Address",
+                "TransactionIdentifier": ""
+            }
+        },
+        "MaximumCandidateListSize": "15",
+        "AddressKeyFormat": {
+            "ConsigneeName": " ",
+            "AttentionName": "UPS",
+            "AddressLine": "123 Main St",
+            "PoliticalDivision2": "UPS MAIN",
+            "PoliticalDivision1": "CA",
+            "PostcodePrimaryLow": "91607",
+            "PostcodeExtendedLow": "1123",
+            "Region": "",
+            "Urbanization": "",
+            "CountryCode": "US"
+        }
+    }
+}

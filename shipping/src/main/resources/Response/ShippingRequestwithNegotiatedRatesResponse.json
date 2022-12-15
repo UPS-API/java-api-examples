@@ -1,0 +1,74 @@
+{
+  "ShipmentResponse": {
+    "Response": {
+      "ResponseStatus": {
+        "Code": "1",
+        "Description": "Success"
+      },
+      "TransactionReference": {
+        "CustomerContext": "GG",
+        "TransactionIdentifier": "trhel8vm2dh3J5YZr6vwMT"
+      }
+    },
+    "ShipmentResults": {
+      "ShipmentCharges": {
+        "TransportationCharges": {
+          "CurrencyCode": "CAD",
+          "MonetaryValue": "25.92"
+        },
+        "ItemizedCharges": [
+          {
+            "Code": "350",
+            "CurrencyCode": "CAD",
+            "MonetaryValue": "1.80"
+          },
+          {
+            "Code": "174",
+            "CurrencyCode": "CAD",
+            "MonetaryValue": "0.00"
+          },
+          {
+            "Code": "171",
+            "CurrencyCode": "CAD",
+            "MonetaryValue": "0.00"
+          },
+          {
+            "Code": "375",
+            "CurrencyCode": "CAD",
+            "MonetaryValue": "4.85"
+          },
+          {
+            "Code": "430",
+            "CurrencyCode": "CAD",
+            "MonetaryValue": "0.42",
+            "SubType": "Commercial_Seasonal_Surcharge"
+          }
+        ],
+        "ServiceOptionsCharges": {
+          "CurrencyCode": "CAD",
+          "MonetaryValue": "1.80"
+        },
+        "TotalCharges": {
+          "CurrencyCode": "CAD",
+          "MonetaryValue": "27.72"
+        }
+      },
+      "BillingWeight": {
+        "UnitOfMeasurement": {
+          "Code": "LBS",
+          "Description": "Pounds"
+        },
+        "Weight": "8.0"
+      },
+      "ShipmentIdentificationNumber": "1Z1662229115284418",
+      "BarCodeImage": "iVBORw0KGgoAAAANSUhEUgAAAyAAAAEsCAAAAAAeRojmAAAAAXNCSVQI5gpbmQAABV1JREFUeJzt3dmSk1oAQFG45f//8vHB2DLuENLaemutpzBjFZshoct5TMCZ/756B+BvJhAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAjfvnoHPsk8TdM0jWmap2n8HDPWM4zzmZcjp/VKpvXMmzHTbnC54H7kZsxm386Wmp7tz+ZfMe1G7vd/v1fxbz/btyu79G9zBYEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCPP46j2Av5grCASBQBAIBIFAEAgEgUAQCASBQBAIBIFAEAgEgUAQCASBQBAIBIFAEAgEgUAQCASBQPj21TvwD5l/fRzLcWM5fawXGNslH6M288bgr2XX02vuo2n7feACgXyWxwE4j+2Y5/P24LXt5poEcZtbrLccNDDHtCeL9+DxhNXnzbbnw7l4hSvIa05PxY+7nuNjcnlHNnbz9mBtdHOzNR73dPPi8vOxps0+cI0ryDvWJ+YxLY7HJ+fs1bzPBs+3un4Y+Tkw1sNyeINA3rN6QF/YHbmLuW7eWB1sdff5Qgvutl4ikDfEsTbOTtzvn87fP8JdUq4TyH3zyal8+1XrtJ5Q8x4Onm91nqYxzfM8n0Yzb/fTBeQ1AvlNTs7St07eTxM4/rL38cC+W9IF5AW+xXrN4hT/h78Nmo+3+vHd13pffgyN+expiItcQf6cd+9uTpYf20fz2o47rBe5gtx16wJy41S+/VF8u44xPa4Uyy/UNq+pzIfPSlwgkNe8caS9d/IeyweLZ5sZq4+LelxAXuUW66Zbh9rbJ+/9Vsdmxfs+pqOnEy5yBbnn8fXp4/OPx+fF2x1PF1/P24O51QPj4KP/au8mV5DP8fz4O3pt/cLgtdX2G5L5uwpJIH/Qp5/Fd09E9YbLb9qH/zm3WPccvRs7n79fuH/jaj3v+eDPO6n1n1SdbHXXxzyWY11AXufe9LrDF9A/DtU5pk2bY3czbw0ev/W+3+ru7d+DN+b9Zvg6t1if7fwI3E956WnkcMWjpo5rsxEE8lnG9gvXlc1fjqznrcGPn8nz5a6T99zHaoXusG5wiwXBFQSCQCAIBIJAIAgEgkAgCASCQCAIBIJAIAgEgkAgCASCQCAIBIJAIAgEgkAgCASCQCAIBIJAIAgEgkAgCASCQCAIBIJAIAgEgkAgCASCQCAIBIJAIAgEgkAgCATCd61E518IL2swAAAAAElFTkSuQmCC",
+      "PackageResults": {
+        "TrackingNumber": "1Z1662229115284418",
+        "ServiceOptionsCharges": {
+          "CurrencyCode": "CAD",
+          "MonetaryValue": "0.00"
+        }
+      }
+    }
+  }
+}

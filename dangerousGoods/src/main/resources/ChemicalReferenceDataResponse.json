@@ -1,0 +1,340 @@
+{
+     "ChemicalReferenceDataResponse": {
+         "Response": {
+             "ResponseStatus": {
+                 "Code": "1",
+                 "Description": "Success"
+             }
+         },
+         "ChemicalData": [
+             {
+                 "ChemicalDetail": {
+                     "RegulationSet": "<Regulation Set>",
+                     "IDNumber": "<ID Number>",
+                     "HazardousMaterialsDescription": "<Hazardous Materials Description>",
+                     "ClassDivisionNumber": "3",
+                     "PackagingGroupType": "II",
+                     "TechnicalNameRequiredIndicator": "N",
+                     "AdditionalShippingInformationRequiredIndicator": "N"
+                 },
+                 "ProperShippingNameDetail": {
+                     "ProperShippingName": [
+                        "<List of Shipping Names>"
+                     ]
+                 },
+                 "PackageQuantityLimitDetail": [
+                     {
+                         "PackageQuantityLimitTypeCode": "LTD QTY",
+                         "Quantity": "1.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "150"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "PAX",
+                         "Quantity": "5.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "202"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "CAO",
+                         "Quantity": "30.0000",
+                         "UOM": "L"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT LTD",
+                         "Quantity": "1.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "150"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT PAX",
+                         "Quantity": "5.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "202"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT CAO",
+                         "Quantity": "60.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "202"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "GND",
+                         "Quantity": "32.0000",
+                         "UOM": "KG"
+                     }
+                 ]
+             },
+             {
+                 "ChemicalDetail": {
+                    "RegulationSet": "<Regulation Set>",
+                    "IDNumber": "<ID Number>",
+                    "HazardousMaterialsDescription": "<Hazardous Materials Description>",
+                     "ClassDivisionNumber": "3",
+                     "PackagingGroupType": "II",
+                     "TechnicalNameRequiredIndicator": "N",
+                     "AdditionalShippingInformationRequiredIndicator": "N"
+                 },
+                 "ProperShippingNameDetail": {
+                     "ProperShippingName": [
+                        "<List of Shipping Names>"
+                     ]
+                 },
+                 "PackageQuantityLimitDetail": [
+                     {
+                         "PackageQuantityLimitTypeCode": "LTD QTY",
+                         "Quantity": "1.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "Y341"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "PAX",
+                         "Quantity": "5.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "353"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "CAO",
+                         "Quantity": "30.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "364"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT LTD",
+                         "Quantity": "1.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "Y341"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT PAX",
+                         "Quantity": "5.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "353"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT CAO",
+                         "Quantity": "60.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "364"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "GND",
+                         "Quantity": "0.0000"
+                     }
+                 ]
+             },
+             {
+                 "ChemicalDetail": {
+                    "RegulationSet": "<Regulation Set>",
+                     "IDNumber": "<ID Number>",
+                     "HazardousMaterialsDescription": "<Hazardous Materials Description>",
+                     "ClassDivisionNumber": "3",
+                     "PackagingGroupType": "II",
+                     "TechnicalNameRequiredIndicator": "N",
+                     "AdditionalShippingInformationRequiredIndicator": "N"
+                 },
+                 "ProperShippingNameDetail": {
+                     "ProperShippingName": [
+                        "<List of Shipping Names>"
+                     ]
+                 },
+                 "PackageQuantityLimitDetail": [
+                     {
+                         "PackageQuantityLimitTypeCode": "LTD QTY",
+                         "Quantity": "1.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "Y341"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "PAX",
+                         "Quantity": "5.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "353"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "CAO",
+                         "Quantity": "60.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "364"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT LTD",
+                         "Quantity": "1.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "Y341"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT PAX",
+                         "Quantity": "5.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "353"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT CAO",
+                         "Quantity": "60.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "364"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "GND",
+                         "Quantity": "99999.0000",
+                         "UOM": "L"
+                     }
+                 ]
+             },
+             {
+                 "ChemicalDetail": {
+                    "RegulationSet": "<Regulation Set>",
+                    "IDNumber": "<ID Number>",
+                    "HazardousMaterialsDescription": "<Hazardous Materials Description>",
+                     "ClassDivisionNumber": "3",
+                     "PackagingGroupType": "II",
+                     "TechnicalNameRequiredIndicator": "N",
+                     "AdditionalShippingInformationRequiredIndicator": "N"
+                 },
+                 "ProperShippingNameDetail": {
+                     "ProperShippingName": [
+                        "<List of Shipping Names>"
+                     ]
+                 },
+                 "PackageQuantityLimitDetail": [
+                     {
+                         "PackageQuantityLimitTypeCode": "LTD QTY",
+                         "Quantity": "0.0000"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "PAX",
+                         "Quantity": "0.0000"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "CAO",
+                         "Quantity": "0.0000"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT LTD",
+                         "Quantity": "0.0000"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT PAX",
+                         "Quantity": "0.0000"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT CAO",
+                         "Quantity": "0.0000"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "GND",
+                         "Quantity": "30.0000",
+                         "UOM": "KG G",
+                         "PackagingInstructionCode": "P001"
+                     }
+                 ]
+             },
+             {
+                 "ChemicalDetail": {
+                    "RegulationSet": "<Regulation Set>",
+                    "IDNumber": "<ID Number>",
+                    "HazardousMaterialsDescription": "<Hazardous Materials Description>",
+                     "ClassDivisionNumber": "3",
+                     "PackagingGroupType": "II",
+                     "TechnicalNameRequiredIndicator": "N",
+                     "AdditionalShippingInformationRequiredIndicator": "N"
+                 },
+                 "ProperShippingNameDetail": {
+                     "ProperShippingName": [
+                        "<List of Shipping Names>"
+                     ]
+                 },
+                 "PackageQuantityLimitDetail": [
+                     {
+                         "PackageQuantityLimitTypeCode": "LTD QTY",
+                         "Quantity": "1.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "Y341"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "PAX",
+                         "Quantity": "5.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "353"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "CAO",
+                         "Quantity": "30.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "364"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT LTD",
+                         "Quantity": "1.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "Y341"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT PAX",
+                         "Quantity": "5.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "353"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT CAO",
+                         "Quantity": "60.0000",
+                         "UOM": "L",
+                         "PackagingInstructionCode": "364"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "GND",
+                         "Quantity": "0.0000"
+                     }
+                 ]
+             },
+             {
+                 "ChemicalDetail": {
+                    "RegulationSet": "<Regulation Set>",
+                    "IDNumber": "<ID Number>",
+                    "HazardousMaterialsDescription": "<Hazardous Materials Description>",
+                     "ClassDivisionNumber": "3",
+                     "PackagingGroupType": "II",
+                     "TechnicalNameRequiredIndicator": "N",
+                     "AdditionalShippingInformationRequiredIndicator": "N"
+                 },
+                 "ProperShippingNameDetail": {
+                     "ProperShippingName": [
+                        "<List of Shipping Names>"
+                     ]
+                 },
+                 "PackageQuantityLimitDetail": [
+                     {
+                         "PackageQuantityLimitTypeCode": "LTD QTY",
+                         "Quantity": "0.0000"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "PAX",
+                         "Quantity": "0.0000"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "CAO",
+                         "Quantity": "0.0000"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT LTD",
+                         "Quantity": "0.0000"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT PAX",
+                         "Quantity": "0.0000"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "COMAT CAO",
+                         "Quantity": "0.0000"
+                     },
+                     {
+                         "PackageQuantityLimitTypeCode": "GND",
+                         "Quantity": "30.0000",
+                         "UOM": "L"
+                     }
+                 ]
+             }
+         ]
+     }
+ }

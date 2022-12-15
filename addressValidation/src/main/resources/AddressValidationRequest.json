@@ -1,0 +1,16 @@
+{
+  "XAVRequest": {
+    "AddressKeyFormat": {
+      "ConsigneeName": "UPS",
+      "AttentionName": "UPS",
+      "AddressLine": "123 Main St",        
+      "Region": "ROSWELL,GA,30076-1521",
+      "PoliticalDivision2": "UPS",
+      "PoliticalDivision1": "CA",
+      "PostcodePrimaryLow": "92656",
+      "PostcodeExtendedLow": "1521",
+      "Urbanization": "porto arundal",
+      "CountryCode": "US"
+    }
+  }
+}

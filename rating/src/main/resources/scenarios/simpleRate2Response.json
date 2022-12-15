@@ -1,0 +1,112 @@
+{
+  "RateResponse": {
+    "Response": {
+      "ResponseStatus": {
+        "Code": "1",
+        "Description": "Success"
+      },
+      "Alert": [
+        {
+          "Code": "110971",
+          "Description": "Your invoice may vary from the displayed reference rates"
+        },
+        {
+          "Code": "111530",
+          "Description": "User level discount not valid for this User ID."
+        }
+      ],
+      "AlertDetail": null,
+      "TransactionReference": {
+        "CustomerContext": "testing"
+      }
+    },
+    "RatedShipment": {
+      "Disclaimer": null,
+      "Service": {
+        "Code": "03",
+        "Description": ""
+      },
+      "RateChart": null,
+      "RatedShipmentAlert": {
+        "Code": "110971",
+        "Description": "Your invoice may vary from the displayed reference rates"
+      },
+      "BillableWeightCalculationMethod": null,
+      "RatingMethod": null,
+      "BillingWeight": {
+        "UnitOfMeasurement": {
+          "Code": "LBS",
+          "Description": "Pounds"
+        },
+        "Weight": "7.0"
+      },
+      "TransportationCharges": {
+        "CurrencyCode": "USD",
+        "MonetaryValue": "20.86"
+      },
+      "BaseServiceCharge": {
+        "CurrencyCode": "USD",
+        "MonetaryValue": "0.00"
+      },
+      "ItemizedCharges": null,
+      "FRSShipmentData": null,
+      "ServiceOptionsCharges": {
+        "CurrencyCode": "USD",
+        "MonetaryValue": "0.00"
+      },
+      "TaxCharges": null,
+      "TotalCharges": {
+        "CurrencyCode": "USD",
+        "MonetaryValue": "20.86"
+      },
+      "TotalChargesWithTaxes": null,
+      "NegotiatedRateCharges": null,
+      "RatedPackage": {
+        "BaseServiceCharge": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "17.79"
+        },
+        "TransportationCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "20.86"
+        },
+        "ServiceOptionsCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "TotalCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "20.86"
+        },
+        "Weight": "7.0",
+        "BillingWeight": {
+          "UnitOfMeasurement": {
+            "Code": "LBS",
+            "Description": "Pounds"
+          },
+          "Weight": "7.0"
+        },
+        "Accessorial": null,
+        "ItemizedCharges": [
+          {
+            "Code": "376",
+            "Description": null,
+            "CurrencyCode": "USD",
+            "MonetaryValue": "0.00",
+            "SubType": "Urban"
+          },
+          {
+            "Code": "375",
+            "Description": null,
+            "CurrencyCode": "USD",
+            "MonetaryValue": "3.07",
+            "SubType": null
+          }
+        ],
+        "NegotiatedCharges": null,
+        "RateModifier": null
+      },
+      "TimeInTransit": null
+    }
+  }
+}

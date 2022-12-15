@@ -1,0 +1,92 @@
+{
+  "RateRequest" : {
+    "Request" : {
+      "RequestOption" : "Rate",
+      "SubVersion" : "1901",
+      "TransactionReference" : {
+        "CustomerContext" : "Verify success returned when international shipment is created with payment option as Bill Shipper with account number"
+      }
+    },
+    "PickupType" : {
+      "Code" : "01",
+      "Description" : "pickup"
+    },
+    "CustomerClassification" : {
+      "Code" : "1607",
+      "Description" : "CustomerClassification"
+    },
+    "Shipment" : {
+      "OriginRecordTransactionTimestamp" : "2016-07-14T12:01:33.999",
+      "Shipper" : {
+        "Name" : "Shipper_Name",
+        "ShipperNumber" : <your shipper number>,
+        "Address" : {
+          "AddressLine" : "123 main street",
+          "City" : "Alpharetta",
+          "StateProvinceCode" : "GA",
+          "PostalCode" : "30005",
+          "CountryCode" : "US"
+        }
+      },
+      "ShipTo" : {
+        "Name" : "ShipToName",
+        "Address" : {
+          "AddressLine" : "ShipToAddress",
+          "City" : "STARZACH",
+          "StateProvinceCode" : "GA",
+          "PostalCode" : "72181",
+          "CountryCode" : "DE"
+        }
+      },
+      "ShipFrom" : {
+        "Name" : "ShipFromName",
+        "Address" : {
+          "AddressLine" : "ShipFromAddressLine",
+          "City" : "Alpharetta",
+          "StateProvinceCode" : "GA",
+          "PostalCode" : "30005",
+          "CountryCode" : "US"
+        }
+      },
+      "PaymentDetails" : {
+        "ShipmentCharge" : {
+          "Type" : "01",
+          "BillShipper" : {
+            "AccountNumber" : <your shipper number>
+          }
+        }
+      },
+      "Service" : {
+        "Code" : "96",
+        "Description" : "UPS Worldwide Express Freight"
+      },
+      "NumOfPieces" : "10",
+      "Package" : {
+        "PackagingType" : {
+          "Code" : "30",
+          "Description" : "Pallet"
+        },
+        "Dimensions" : {
+          "UnitOfMeasurement" : {
+            "Code" : "IN",
+            "Description" : "Inches"
+          },
+          "Length" : "5",
+          "Width" : "5",
+          "Height" : "5"
+        },
+        "PackageWeight" : {
+          "UnitOfMeasurement" : {
+            "Code" : "LBS",
+            "Description" : "LBS"
+          },
+          "Weight" : "10"
+        },
+        "PackageServiceOptions" : { },
+        "OversizeIndicator" : "",
+        "MinimumBillableWeightIndicator" : ""
+      },
+      "ShipmentServiceOptions" : { }
+    }
+  }
+}

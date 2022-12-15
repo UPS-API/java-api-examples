@@ -1,0 +1,79 @@
+{
+    "RateRequest": {
+      "Request": {
+        "RequestOption": "Rate",
+        "SubVersion": "2108",
+        "TransactionReference": {
+          "CustomerContext": "CustomerContext"
+        }
+      },
+      "Shipment": {
+        "Shipper": {
+          "Name": "ShipperName",
+          "ShipperNumber": <invalid shipper number>,
+          "Address": {
+            "AddressLine": "123 main street",
+            "City": "TIMONIUM",
+            "StateProvinceCode": "MD",
+            "PostalCode": "21093",
+            "CountryCode": "US"
+          }
+        },
+        "ShipTo": {
+          "Name": "ShipToName",
+          "Address": {
+            "AddressLine": "ShipToAddressLine",
+            "City": "Alpharetta",
+            "StateProvinceCode": "GA",
+            "PostalCode": "30005",
+            "CountryCode": "US"
+          }
+        },
+        "ShipFrom": {
+          "Name": "ShipFromName",
+          "Address": {
+            "AddressLine": "ShipFromAddressLine",
+            "City": "TIMONIUM",
+            "StateProvinceCode": "MD",
+            "PostalCode": "21093",
+            "CountryCode": "US"
+          }
+        },
+        "PaymentDetails": {
+          "ShipmentCharge": {
+            "Type": "01",
+            "BillShipper": {
+              "AccountNumber": ""
+            }
+          }
+        },
+        "Service": {
+          "Code": "03",
+          "Description": "Ground"
+        },
+        "NumOfPieces": "1",
+        "Package": {
+          "PackagingType": {
+            "Code": "02",
+            "Description": "Packaging"
+          },
+          "Dimensions": {
+            "UnitOfMeasurement": {
+              "Code": "IN",
+              "Description": "Inches"
+            },
+            "Length": "5",
+            "Width": "5",
+            "Height": "5"
+          },
+          "PackageWeight": {
+            "UnitOfMeasurement": {
+              "Code": "LBS",
+              "Description": "Pounds"
+            },
+            "Weight": "1"
+          }
+        }
+      }
+    }
+}

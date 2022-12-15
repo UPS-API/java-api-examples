@@ -1,0 +1,312 @@
+{
+  "ShipmentRequest" : {
+    "Request" : {
+      "RequestOption" : "nonvalidate",
+      "SubVersion" : "1901",
+      "TransactionReference" : {
+        "CustomerContext" : "Verify success returned when shipment is created with International form type as Invoice and missing shipper phone number"
+      }
+    },
+    "Shipment" : {
+      "Description" : "IF",
+      "Shipper" : {
+        "Name" : "Shipper_name",
+        "AttentionName" : "Shipper_name",
+        "CompanyDisplayableName" : "Shipper_name",
+        "Phone" : {
+          "Number" : "1234567890",
+          "Extension" : "1234"
+        },
+        "ShipperNumber" : "<Shipper Number>",
+        "FaxNumber" : "1234",
+        "EMailAddress" : "<your email address>",
+        "Address" : {
+          "AddressLine" :  "ShipperAddress",
+          "City" : "Timonium",
+          "StateProvinceCode" : "MD",
+          "PostalCode" : "21093",
+          "CountryCode" : "US"
+        }
+      },
+      "ShipTo" : {
+        "Name" : "ShipToName",
+        "AttentionName" : "ShipToName",
+        "CompanyDisplayableName" : "ShipToName",
+        "Phone" : {
+          "Number" : "1234567890",
+          "Extension" : "1234"
+        },
+        "FaxNumber" : "1234",
+        "EMailAddress" : "<your email address>",
+        "Address" : {
+          "AddressLine" : "ShipToAddress",
+          "City" : "Shanghai",
+          "StateProvinceCode" : "ON",
+          "PostalCode" : "200031",
+          "CountryCode" : "CN"
+        }
+      },
+      "ShipFrom" : {
+        "Name" : "ShipFromName",
+        "AttentionName" : "ShipFromName",
+        "CompanyDisplayableName" : "ShipFromName",
+        "Phone" : {
+          "Number" : "1234567890",
+          "Extension" : "1234"
+        },
+        "FaxNumber" : "1234",
+        "Address" : {
+          "AddressLine" :  "ShipFromAddress",
+          "City" : "Timonium",
+          "StateProvinceCode" : "MD",
+          "PostalCode" : "21093",
+          "CountryCode" : "US"
+        }
+      },
+      "PaymentInformation" : {
+        "ShipmentCharge" :  {
+          "Type" : "01",
+          "BillShipper" : {
+            "AccountNumber" : "<your Account Number>"
+          }
+        }
+      },
+      "Service" : {
+        "Code" : "96",
+        "Description" : "WorldWideExpressFreight"
+      },
+      "InvoiceLineTotal" : {
+        "CurrencyCode" : "USD",
+        "MonetaryValue" : "10"
+      },
+      "NumOfPiecesInShipment" : "1",
+      "CostCenter" : "123",
+      "ShipmentServiceOptions" : {
+        "InternationalForms" : {
+          "FormType" : "01",
+          "CN22Form" : {
+            "LabelSize" : "6",
+            "PrintsPerPage" : "1",
+            "LabelPrintType" : "pdf",
+            "CN22Type" : "1",
+            "CN22OtherDescription" : "test cn22",
+            "FoldHereText" : "fold",
+            "CN22Content" : {
+              "CN22ContentQuantity" : "300",
+              "CN22ContentDescription" : "desc",
+              "CN22ContentWeight" : {
+                "UnitOfMeasurement" : {
+                  "Code" : "LBS",
+                  "Description" : "LBS"
+                },
+                "Weight" : "70"
+              },
+              "CN22ContentTotalValue" : "2",
+              "CN22ContentCurrencyCode" : "USD",
+              "CN22ContentCountryOfOrigin" : "US",
+              "CN22ContentTariffNumber" : "4565655"
+            }
+          },
+          "FormGroupIdName" : "Invoice",
+          "EEIFilingOption" : {
+            "Code" : "1",
+            "EMailAddress" : "<your email address>",
+            "Description" : "EEI",
+            "UPSFiled" : {
+              "POA" : {
+                "Code" : "1",
+                "Description" : "POA"
+              }
+            },
+            "ShipperFiled" : {
+              "Code" : "B",
+              "Description" : "ShipperFiled",
+              "EEIShipmentReferenceNumber" : "1234"
+            }
+          },
+          "Contacts" : {
+            "ForwardAgent" : {
+              "CompanyName" : "UPS",
+              "TaxIdentificationNumber" : "<Tax Identification Number>",
+              "Address" : {
+                "AddressLine" :  "AddressLine",
+                "City" : "Alpharetta",
+                "StateProvinceCode" : "GA",
+                "PostalCode" : "30005",
+                "CountryCode" : "US",
+                "Town" : "Town"
+              }
+            },
+            "UltimateConsignee" : {
+              "CompanyName" : "UPS",
+              "Address" : {
+                "AddressLine" :  "Address",
+                "City" : "Alpharetta",
+                "StateProvinceCode" : "GA",
+                "PostalCode" : "30006",
+                "CountryCode" : "US",
+                "Town" : "TOWN"
+              },
+              "UltimateConsigneeType" : {
+                "Code" : "D",
+                "Description" : "Direct Consumer"
+              }
+            },
+            "Producer" : {
+              "CompanyName" : "ProducerCompanyName",
+              "TaxIdentificationNumber" : "1234",
+              "Address" : {
+                "AddressLine" :  "Address",
+                "City" : "Marietta",
+                "StateProvinceCode" : "GA",
+                "PostalCode" : "166222",
+                "CountryCode" : "CA",
+                "Town" : "Town"
+              },
+              "AttentionName" : "Name",
+              "Phone" : {
+                "Number" : "1234567890",
+                "Extension" : "1234"
+              },
+              "EMailAddress" : "<your email address>"
+            },
+            "SoldTo" : {
+              "Name" : "Name",
+              "AttentionName" : "AttentionName",
+              "TaxIdentificationNumber" : "1235",
+              "Phone" : {
+                "Number" : "1234567890",
+                "Extension" : "1234"
+              },
+              "Option" : "01",
+              "Address" : {
+                "AddressLine" :  "Address",
+                "City" : "Shanghai",
+                "StateProvinceCode" : "ON",
+                "PostalCode" : "200031",
+                "CountryCode" : "CN",
+                "Town" : "town"
+              },
+              "EMailAddress" : "<your email address>"
+            }
+          },
+          "Product" : {
+            "Description" : "Today is the best day of the week",
+            "Unit" : {
+              "Number" : "1",
+              "UnitOfMeasurement" : {
+                "Code" : "LBS",
+                "Description" : "LBS"
+              },
+              "Value" : "1"
+            },
+            "CommodityCode" : "12345679",
+            "PartNumber" : "1234",
+            "OriginCountryCode" : "US",
+            "NetCostCode" : "NC",
+            "NetCostDateRange" : {
+              "BeginDate" : "20050115",
+              "EndDate" : "20050816"
+            },
+            "PreferenceCriteria" : "A",
+            "ProducerInfo" : "Yes",
+            "MarksAndNumbers" : "1",
+            "NumberOfPackagesPerCommodity" : "1",
+            "ProductWeight" : {
+              "UnitOfMeasurement" : {
+                "Code" : "LBS"
+              },
+              "Weight" : "10"
+            },
+            "ScheduleB" : {
+              "Number" : "12345",
+              "Quantity" : "5",
+              "UnitOfMeasurement" : {
+                "Code" : "PCS",
+                "Description" : "PCS"
+              }
+            },
+            "ExportType" : "D",
+            "SEDTotalValue" : "123.45",
+            "PackingListInfo" : {
+              "PackageAssociated" : {
+                "PackageNumber" : "01",
+                "ProductAmount" : "147"
+              }
+            },
+            "EEIInformation" : {
+              "ExportInformation" : "OS",
+              "License" : {
+                "Number" : "Number",
+                "Code" : "C30",
+                "LicenseLineValue" : "45"
+              }
+            }
+          },
+          "InvoiceNumber" : "<Invoice Number>",
+          "InvoiceDate" : "20130410",
+          "PurchaseOrderNumber" : "<Purchase Order Number>",
+          "TermsOfShipment" : "CFR",
+          "ReasonForExport" : "Sale",
+          "Comments" : "Enter in any extra information about the current shipment.",
+          "Discount" : {
+            "MonetaryValue" : "100"
+          },
+          "FreightCharges" : {
+            "MonetaryValue" : "76"
+          },
+          "InsuranceCharges" : {
+            "MonetaryValue" : "789"
+          },
+          "OtherCharges" : {
+            "MonetaryValue" : "10",
+            "Description" : "10"
+          },
+          "CurrencyCode" : "USD",
+          "BlanketPeriod" : {
+            "BeginDate" : "20130420",
+            "EndDate" : "20130430"
+          },
+          "ExportDate" : "20210406",
+          "ExportingCarrier" : "A",
+          "CarrierID" : "IATA",
+          "InBondCode" : "70",
+          "EntryNumber" : "<Entry Number>",
+          "PointOfOrigin" : "MS",
+          "PointOfOriginType" : "MS",
+          "ModeOfTransport" : "Rail",
+          "PortOfExport" : "Overland",
+          "PortOfUnloading" : "Germany",
+          "LoadingPier" : "Pier 17 Dock 31",
+          "PartiesToTransaction" : "N"
+        }
+      },
+      "Package" : {
+        "Description" : "IF",
+        "NumOfPieces" : "10",
+        "Packaging" : {
+          "Code" : "30",
+          "Description" : "Pallets"
+        },
+        "Dimensions" : {
+          "UnitOfMeasurement" : {
+            "Code" : "IN",
+            "Description" : "IN"
+          },
+          "Length" : "50",
+          "Width" : "37",
+          "Height" : "40"
+        },
+        "PackageWeight" : {
+          "UnitOfMeasurement" : {
+            "Code" : "LBS",
+            "Description" : "LBS"
+          },
+          "Weight" : "50"
+        }
+      },
+      "BarCodeImageIndicator" : "",
+      "BarCodeAndLabelIndicator" : ""
+    }
+  }
+}

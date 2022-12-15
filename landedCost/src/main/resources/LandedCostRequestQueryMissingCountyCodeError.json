@@ -1,0 +1,56 @@
+{
+  "LandedCostRequest" : {
+    "Request" : {
+      "RequestAction" : "LandedCost"
+    },
+    "QueryRequest" : {
+      "Shipment" : {
+        "OriginCountryCode" : "YYY",
+        "DestinationCountryCode" : "US",
+        "DestinationStateProvinceCode" : "GA",
+        "TransportationMode" : "1",
+        "FreightCharges" : {
+          "MonetaryValue" : "20",
+          "CurrencyCode" : "USD"
+        },
+        "AdditionalInsurance" : {
+          "MonetaryValue" : "10",
+          "CurrencyCode" : "USD"
+        },
+        "Product" : {
+          "ProductName" : "Name",
+          "ProductDescription" : "Desc",
+          "ProductCountryCodeOfOrigin" : "GA",
+          "TariffInfo" : {
+            "TariffCode" : "4901990000",
+            "DetailID" : "12",
+            "SecondaryTariffCode" : "4901990000",
+            "SecondaryDetailID" : "123"
+          },
+          "Quantity" : {
+            "Value" : "1",
+            "UnitOfMeasure" : {
+              "UnitCode" : "kg",
+              "UnitDescription" : "Desc"
+            }
+          },
+          "UnitPrice" : {
+            "MonetaryValue" : "100",
+            "CurrencyCode" : "EUR"
+          },
+          "Weight" : {
+            "Value" : "12",
+            "UnitOfMeasure" : {
+              "UnitCode" : "kg",
+              "UnitDescription" : "Desc"
+            }
+          },
+          "TariffCodeAlert" : "01"
+        },
+        "ResultCurrencyCode" : "USD"
+      },
+      "TransactionReferenceID" : "Y",
+      "SuppressQuestionIndicator" : "Y"
+    }
+  }
+}

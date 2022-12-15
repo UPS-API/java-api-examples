@@ -1,0 +1,21 @@
+{
+  "originStateProvince": "",
+  "originCityName": "",
+  "originTownName": "",
+  "originPostalCode": "10703",
+  "destinationCountryCode": "US",
+  "destinationStateProvince": "NH",
+  "destinationCityName": "MANCHESTER",
+  "destinationTownName": "",
+  "destinationPostalCode": "03104",
+  "weight": "10.5",
+  "weightUnitOfMeasure": "LBS",
+  "shipmentContentsValue": "10.5",
+  "shipmentContentsCurrencyCode": "USD",
+  "billType": "03",
+  "shipDate": "2022-10-07",
+  "shipTime": "",
+  "residentialIndicator": "",
+  "avvFlag": true,
+  "numberOfPackages": "1"
+}

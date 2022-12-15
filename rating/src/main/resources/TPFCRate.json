@@ -1,0 +1,90 @@
+{
+  "RateRequest": {
+    "Request": {
+      "RequestOption": "Rate",
+      "SubVersion": "2205",
+      "TransactionReference": {
+        "CustomerContext": "Verify Success response with Negotiated Rates is returned when Rate request is submitted with WWE DDU Postal Service, NegotiatedRatesIndicator, TPFCNegotiatedRatesIndicator and Valid Shipper account which has ABR Rates."
+      }
+    },
+    "Shipment": {
+      "Shipper": {
+        "Name": "UPS",
+        "AttentionName": "Anyone",
+        "ShipperNumber": <your shipper number>,
+        "Address": {
+          "AddressLine": "123 main street",
+          "City": "Alpharetta",
+          "StateProvinceCode": "GA",
+          "PostalCode": "90014",
+          "CountryCode": "US"
+        }
+      },
+      "ShipTo": {
+        "Name": "Happy Dog Pet Supply",
+        "AttentionName": "Someone",
+        "Address": {
+          "AddressLine": "123 main street",
+          "City": "carrollton",
+          "StateProvinceCode": "MA",
+          "PostalCode": "01373",
+          "CountryCode": "US"
+        }
+      },
+      "ShipFrom": {
+        "Name": "UPS",
+        "AttentionName": "Anyone",
+        "Address": {
+          "AddressLine": "123 main street",
+          "City": "Texas",
+          "StateProvinceCode": "TX",
+          "PostalCode": "77040",
+          "CountryCode": "US"
+        }
+      },
+      "PaymentDetails": {
+        "ShipmentCharge": {
+          "Type": "01",
+          "BillThirdParty": {
+            "AccountNumber": <your account number>,
+            "Address": {
+              "PostalCode": "07430",
+              "CountryCode": "US"
+            }
+          }
+        }
+      },
+      "Service": {
+        "Code": "01",
+        "Description": "Next Day Air"
+      },
+      "ShipmentRatingOptions": {
+        "TPFCNegotiatedRatesIndicator": "Y",
+        "NegotiatedRatesIndicator": "Y"
+      },
+      "NumOfPieces": "10",
+      "Package": {
+        "PackagingType": {
+          "Code": "02",
+          "Description": "Packaging"
+        },
+        "Dimensions": {
+          "UnitOfMeasurement": {
+            "Code": "IN",
+            "Description": "Inches"
+          },
+          "Length": "6",
+          "Width": "8",
+          "Height": "7"
+        },
+        "PackageWeight": {
+          "UnitOfMeasurement": {
+            "Code": "LBS",
+            "Description": "LBS"
+          },
+          "Weight": "5"
+        }
+      }
+    }
+  }
+}

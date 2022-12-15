@@ -1,0 +1,46 @@
+{
+  "LandedCostRequest": {
+    "Request" : {
+      "RequestAction" : "LandedCost"
+    },
+    "QueryRequest": {
+      "Shipment": {
+        "OriginCountryCode": "US",
+        "OriginStateProvinceCode": "",
+        "DestinationCountryCode": "BE",
+        "DestinationStateProvinceCode": "",
+        "TransportationMode": "1",
+        "FreightCharges": {
+          "MonetaryValue": "10",
+          "CurrencyCode": "EUR"
+        },
+        "AdditionalInsurance": {
+          "MonetaryValue": "10",
+          "CurrencyCode": "EUR"
+        },
+        "Product": {
+          "TariffInfo": {
+            "TariffCode": "4901990000"
+          },
+          "ProductCountryCodeOfOrigin": "US",
+          "Quantity": {
+            "Value": "5"
+          },
+          "Weight": {
+            "Value": "2",
+            "UnitOfMeasure": {
+              "UnitCode": "kg",
+              "UnitDescription": ""
+            }
+          },
+          "UnitPrice": {
+            "MonetaryValue": "5.5",
+            "CurrencyCode": "USD"
+          }
+        },
+        "ResultCurrencyCode": "EUR"
+      },
+      "TransactionReferenceID": "P_1142e_LC_25_EEK"
+    }
+  }
+}

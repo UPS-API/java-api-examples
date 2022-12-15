@@ -1,0 +1,142 @@
+{
+  "RateResponse": {
+    "Response": {
+      "ResponseStatus": {
+        "Code": "1",
+        "Description": "Success"
+      },
+      "Alert": [
+        {
+          "Code": "112237",
+          "Description": "Modifier is applied on Package(s);"
+        },
+        {
+          "Code": "110971",
+          "Description": "Your invoice may vary from the displayed reference rates"
+        },
+        {
+          "Code": "120900",
+          "Description": "User Id and Shipper Number combination is not qualified to receive negotiated rates"
+        }
+      ],
+      "AlertDetail": null,
+      "TransactionReference": {
+        "CustomerContext": "testing",
+        "TransactionIdentifier": "trhel8vm1ck5R5tVkN5JlF"
+      }
+    },
+    "RatedShipment": [
+      {
+        "Disclaimer": null,
+        "Service": {
+          "Code": "01",
+          "Description": ""
+        },
+        "GuaranteedDelivery": {
+          "BusinessDaysInTransit": "1",
+          "DeliveryByTime": "10:30 A.M."
+        },
+        "RateChart": null,
+        "RatedShipmentAlert": [
+          {
+            "Code": "120900",
+            "Description": "User Id and Shipper Number combination is not qualified to receive negotiated rates."
+          },
+          {
+            "Code": "112237",
+            "Description": "Lane Balance Modifier is applied on Package 1"
+          },
+          {
+            "Code": "110971",
+            "Description": "Your invoice may vary from the displayed reference rates"
+          }
+        ],
+        "BillableWeightCalculationMethod": null,
+        "RatingMethod": null,
+        "BillingWeight": {
+          "UnitOfMeasurement": {
+            "Code": "LBS",
+            "Description": "Pounds"
+          },
+          "Weight": "5.0"
+        },
+        "TransportationCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "139.76"
+        },
+        "BaseServiceCharge": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "ItemizedCharges": null,
+        "FRSShipmentData": null,
+        "ServiceOptionsCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "7.19"
+        },
+        "TaxCharges": null,
+        "TotalCharges": {
+          "CurrencyCode": "USD",
+          "MonetaryValue": "0.00"
+        },
+        "TotalChargesWithTaxes": null,
+        "NegotiatedRateCharges": {
+          "ItemizedCharges": null,
+          "TaxCharges": null,
+          "TotalCharge": {
+            "CurrencyCode": "USD",
+            "MonetaryValue": "146.95"
+          },
+          "TotalChargesWithTaxes": null
+        },
+        "RatedPackage": [
+          {
+            "BaseServiceCharge": {
+              "CurrencyCode": "USD",
+              "MonetaryValue": "0.00"
+            },
+            "TransportationCharges": {
+              "CurrencyCode": "USD",
+              "MonetaryValue": "0.00"
+            },
+            "ServiceOptionsCharges": {
+              "CurrencyCode": "USD",
+              "MonetaryValue": "0.00"
+            },
+            "TotalCharges": {
+              "CurrencyCode": "USD",
+              "MonetaryValue": "0.00"
+            },
+            "Weight": "5.0",
+            "BillingWeight": {
+              "UnitOfMeasurement": {
+                "Code": "LBS",
+                "Description": "Pounds"
+              },
+              "Weight": "5.0"
+            },
+            "Accessorial": null,
+            "ItemizedCharges": [
+              {
+                "Code": "375",
+                "Description": null,
+                "CurrencyCode": "USD",
+                "MonetaryValue": "24.95",
+                "SubType": null
+              }
+            ],
+            "NegotiatedCharges": null,
+            "RateModifier": {
+              "ModifierType": "LBM",
+              "ModifierDesc": "Lane Balance Modifier",
+              "CurrencyCode": null,
+              "Amount": "-4.00"
+            },
+            "SimpleRate": null
+          }
+        ],
+        "TimeInTransit": null
+      }
+    ]
+  }
+}

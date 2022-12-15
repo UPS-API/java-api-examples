@@ -1,0 +1,32 @@
+{
+  "PickupGetServiceCenterFacilitiesRequest" : {
+    "Request" : {
+      "TransactionReference" : {
+        "CustomerContext" : "Verify success response is returned with UPS location informatiom when GetServiceLocation request is submitted"
+      }
+    },
+    "PickupPiece" : {
+      "ServiceCode" : "096",
+      "ContainerCode" : "03"
+    },
+    "OriginAddress" : {
+      "StreetAddress" : "Test address Line",
+      "City" : "BERLIN",
+      "StateProvince" : "NY",
+      "PostalCode" : "10011",
+      "CountryCode" : "DE",
+      "OriginSearchCriteria" : {
+        "SearchRadius" : "1",
+        "DistanceUnitOfMeasure" : "MI",
+        "MaximumLocation" : "10"
+      }
+    },
+    "DestinationAddress" : {
+      "City" : "Ontario",
+      "StateProvince" : "ON",
+      "PostalCode" : "A1A1A1",
+      "CountryCode" : "CA"
+    },
+    "Locale" : "en_US"
+  }
+}

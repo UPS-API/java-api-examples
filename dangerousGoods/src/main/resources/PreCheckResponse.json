@@ -1,0 +1,28 @@
+{
+  "AcceptanceAuditPreCheckResponse": {
+      "Response": {
+          "ResponseStatus": {
+              "Code": "1",
+              "Description": "Success"
+          },
+          "TransactionReference": {
+              "CustomerContext": "",
+              "TransactionIdentifier": "123456789"
+          }
+      },
+      "ShipperNumber": "<Shipper Number>",
+      "Service": {
+          "Code": "001"
+      },
+      "RegulationSet": "<Regulation Set>",
+      "PackageResults": {
+          "PackageIdentifier": "12",
+          "AccessibleIndicator": "N",
+          "EuropeBUIndicator": "N",
+          "ChemicalRecordResults": {
+              "ChemicalRecordIdentifier": "12",
+              "ADRUnits": "0.0"
+          }
+      }
+  }
+}

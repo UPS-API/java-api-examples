@@ -1,0 +1,24 @@
+{
+  "XAVRequest": {
+      "Request": {
+          "RequestOption": "3",
+          "TransactionReference": {
+              "CustomerContext": "Verify XAV Request returns Success Response when Request Option as Address Validation with Validation Source as USPS for US Unclassified in AddressKey",
+              "TransactionIdentifier": ""
+          }
+      },
+      "MaximumCandidateListSize": "20",
+      "AddressKeyFormat": {
+          "ConsigneeName": "",
+          "AttentionName": "",
+          "AddressLine": "123 Main St",
+          "PoliticalDivision2": "UPS MAIN",
+          "PoliticalDivision1": "NY",
+          "PostcodePrimaryLow": "11222",
+          "PostcodeExtendedLow": "5645",
+          "Region": "",
+          "Urbanization": "",
+          "CountryCode": "US"
+      }
+  }
+}

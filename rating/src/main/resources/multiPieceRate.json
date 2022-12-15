@@ -1,0 +1,103 @@
+{
+    "RateRequest": {
+      "Request": {
+        "RequestOption": "Rate",
+        "SubVersion": "2108",
+        "TransactionReference": {
+          "CustomerContext": "CustomerContext"
+        }
+      },
+      "Shipment": {
+        "Shipper": {
+          "Name": "ShipperName",
+          "ShipperNumber": <your shipper number>,
+          "Address": {
+            "AddressLine": "123 main street",
+            "City": "TIMONIUM",
+            "StateProvinceCode": "MD",
+            "PostalCode": "21093",
+            "CountryCode": "US"
+          }
+        },
+        "ShipTo": {
+          "Name": "ShipToName",
+          "Address": {
+            "AddressLine": "ShipToAddressLine",
+            "City": "Alpharetta",
+            "StateProvinceCode": "GA",
+            "PostalCode": "30005",
+            "CountryCode": "US"
+          }
+        },
+        "ShipFrom": {
+          "Name": "ShipFromName",
+          "Address": {
+            "AddressLine": "ShipFromAddressLine",
+            "City": "TIMONIUM",
+            "StateProvinceCode": "MD",
+            "PostalCode": "21093",
+            "CountryCode": "US"
+          }
+        },
+        "Service": {
+          "Code": "03",
+          "Description": "Ground"
+        },
+        "ShipmentTotalWeight": {
+          "UnitOfMeasurement": {
+            "Code": "LBS",
+            "Description": "Pounds"
+          },
+          "Weight": "3"
+        },
+        "NumOfPieces": "2",
+        "Package": [
+          {
+            "PackagingType": {
+              "Code": "02",
+              "Description": "Packaging"
+            },
+            "Dimensions": {
+              "UnitOfMeasurement": {
+                "Code": "IN",
+                "Description": "Inches"
+              },
+              "Length": "5",
+              "Width": "5",
+              "Height": "5"
+            },
+            "PackageWeight": {
+              "UnitOfMeasurement": {
+                "Code": "LBS",
+                "Description": "Pounds"
+              },
+              "Weight": "1"
+            }
+          },
+          {
+            "PackagingType": {
+              "Code": "02",
+              "Description": "Packaging"
+            },
+            "Dimensions": {
+              "UnitOfMeasurement": {
+                "Code": "IN",
+                "Description": "Inches"
+              },
+              "Length": "4",
+              "Width": "4",
+              "Height": "4"
+            },
+            "PackageWeight": {
+              "UnitOfMeasurement": {
+                "Code": "LBS",
+                "Description": "Pounds"
+              },
+              "Weight": "2"
+            }
+          }
+        ]
+      }
+    }
+  
+}
