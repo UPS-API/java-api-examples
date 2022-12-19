@@ -53,7 +53,7 @@ There are 2 notable class in this tutorial, namely com.ups.api.app.AppConfig and
 com.ups.api.app.PickupDemo.  The AppConfig class is a configuration class leveraging 
 Spring injection to incorporate the property value from 
 src/main/resources/application.properties file.  The TnTDemo is to illustrate how 
-to use the Landed cost api.
+to use the Pickup cost api.
 
 
 ```java
