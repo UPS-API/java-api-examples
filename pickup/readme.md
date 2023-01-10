@@ -52,8 +52,8 @@ java -jar pickup-x.x.x.jar
 There are 2 notable class in this tutorial, namely com.ups.api.app.AppConfig and 
 com.ups.api.app.PickupDemo.  The AppConfig class is a configuration class leveraging 
 Spring injection to incorporate the property value from 
-src/main/resources/application.properties file.  The TnTDemo is to illustrate how 
-to use the Landed cost api.
+src/main/resources/application.properties file.  The PickupDemo is to illustrate how 
+to use the Pickup api.
 
 
 ```java
