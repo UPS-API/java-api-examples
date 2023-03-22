@@ -537,7 +537,10 @@
             "description": "Bar Code And Label Indicator. Presence of this indicator means both bar code image and shipping label will be returned.",
             "type": "string"
           },
-          "Package": { "$ref": "#/components/schemas/Shipment_Package" }
+          "Package": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Shipment_Package" }
+          }
         },
         "xml": { "name": "Shipment" },
         "required": ["Shipper", "Service", "ShipTo", "Package"],
@@ -6006,7 +6009,12 @@
           "ResponseStatus": {
             "$ref": "#/components/schemas/Response_ResponseStatus"
           },
-          "Alert": { "$ref": "#/components/schemas/Response_Alert" },
+          "Alert": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Response_Alert"
+            }
+          },
           "TransactionReference": {
             "$ref": "#/components/schemas/Response_TransactionReference"
           }
@@ -6132,7 +6140,8 @@
             "type": "string"
           },
           "PackageResults": {
-            "$ref": "#/components/schemas/ShipmentResults_PackageResults"
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ShipmentResults_PackageResults" }
           },
           "ControlLogReceipt": {
             "$ref": "#/components/schemas/ShipmentResults_ControlLogReceipt"
@@ -7260,7 +7269,10 @@
         "type": "object",
         "properties": {
           "ItemizedCharges": {
-            "$ref": "#/components/schemas/NegotiatedCharges_ItemizedCharges"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NegotiatedCharges_ItemizedCharges"
+            }
           }
         },
         "xml": { "name": "NegotiatedCharges" },

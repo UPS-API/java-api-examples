@@ -1,0 +1,40 @@
+{
+  "currencyCode": "GBP",
+  "transID": "325467165",
+  "allowPartialLandedCostResult": false,
+  "alversion": 0,
+  "shipment": {
+    "id": "ShipmentID83",
+    "importCountryCode": "GB",
+    "importProvince": "",
+    "shipDate": "",
+    "exportCountryCode": "US",
+    "incoterms": "",
+    "shipmentItems": [
+      {
+        "commodityId": "1",
+        "grossWeightUnit": "",
+        "priceEach": "125",
+        "hsCode": "400932",
+        "quantity": 24,
+        "UOM": "Each",
+        "originCountryCode": "GB",
+        "commodityCurrencyCode": "GBP",
+        "description": ""
+      },
+      {
+        "commodityId": "4",
+        "grossWeightUnit": "",
+        "priceEach": "0.5",
+        "hsCode": "",
+        "quantity": 900,
+        "UOM": "Each",
+        "originCountryCode": "GB",
+        "commodityCurrencyCode": "GBP",
+        "description": "Cord 5mm {PK50 Yellow/Red"
+      }
+    ],
+    "transModes": "",
+    "shipmentType": "Sale"
+  }
+}

@@ -16,9 +16,9 @@
         "Phone": {
           "Number": "1234567890"
         },
-        "ShipperNumber": "WA8290",
+        "ShipperNumber": "<Shipper Number>",
         "Address": {
-          "AddressLine": "435 SOUTH ST",
+          "AddressLine": "ShipperAddress",
           "City": "Albany",
           "StateProvinceCode": "NY",
           "PostalCode": "12211",
@@ -34,7 +34,7 @@
         "FaxNumber": "1234567999",
         "TaxIdentificationNumber": "456999",
         "Address": {
-          "AddressLine": "355 West San Fernando Street",
+          "AddressLine": "ShipToAddress",
           "City": "San Jose",
           "StateProvinceCode": "CA",
           "PostalCode": "95113",
@@ -42,15 +42,15 @@
         }
       },
       "ShipFrom": {
-        "Name": "US MEDI/HOME CARE",
-        "AttentionName": "MAQUOKETA MEDI/HOME CARE",
+        "Name": "ShipFromName",
+        "AttentionName": "ShipFromName",
         "Phone": {
           "Number": "1234567890"
         },
         "FaxNumber": "1234567999",
         "TaxIdentificationNumber": "456999",
         "Address": {
-          "AddressLine": "2311 YORK ROAD",
+          "AddressLine": "ShipFromAddress",
           "City": "Albany",
           "StateProvinceCode": "NY",
           "PostalCode": "12211",
@@ -61,7 +61,7 @@
         "ShipmentCharge": {
           "Type": "01",
           "BillShipper": {
-            "AccountNumber": "WA8290"
+            "AccountNumber": "<your Account Number>"
           }
         }
       },

@@ -1,0 +1,15 @@
+{
+  "countryCode": "US",
+  "locale": "en_US",
+  "shipperAccountNumber": "",
+  "trackingNumberList": [
+    "<Tracking Number A>",
+    "<Tracking Number B>"
+  ],
+  "scanPreference": [],
+  "destination": {
+    "url": "<Your Message Receiver URL>",
+    "credential": "<Your Message Endpoint Access Token>",
+    "credentialType": "Bearer"
+  }
+}

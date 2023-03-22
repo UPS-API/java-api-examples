@@ -1,0 +1,16 @@
+{
+    "PushToImageRepositoryRequest": {
+        "Request": {
+            "TransactionReference": {
+                "CustomerContext": "Verify Paperless Document request returns Success Response for PushToImageRepositoryRequest with DocumentID"
+            }
+        },
+        "FormsHistoryDocumentID": {
+            "DocumentID": "<Document ID>"
+        },
+        "ShipmentIdentifier": "<Shipment Identifier>",
+        "ShipmentType": "1",
+        "TrackingNumber": "<Tracking Number>",
+        "ShipmentDateAndTime":"2022-12-20-10.00.00"
+    }
+}

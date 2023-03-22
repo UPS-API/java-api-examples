@@ -153,7 +153,7 @@
       },
       "XAVRequest": {
         "type": "object",
-        "required": ["AddressKeyFormat", "Request"],
+        "required": ["AddressKeyFormat"],
         "properties": {
           "Request": {
             "$ref": "#/components/schemas/XAVRequest_Request"
@@ -263,7 +263,7 @@
           },
           "AddressLine": {
             "description": "Address line (street number, street name and street type, and political division 1, political division 2 and postal code) used for street level information.\nAdditional secondary information (apartment, suite, floor, etc.)\nApplicable to US and PR only. \nNot returned if user selects the RegionalRequestIndicator.",
-            "type": "string"
+            "type": "object"
           },
           "Region": {
             "description": "Single entry containing in this order  Political Division 2, Political Division 1 and Post Code Primary Low and/or PostcodeExtendedLow.",
@@ -393,9 +393,12 @@
             "$ref": "#/components/schemas/XAVResponse_AddressClassification"
           },
           "Candidate": {
-            "$ref": "#/components/schemas/XAVResponse_Candidate"
-          }
-        },
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/XAVResponse_Candidate"
+            }
+            }
+          },
         "xml": {
           "name": "XAVResponse"
         },
@@ -604,7 +607,7 @@
           },
           "AddressLine": {
             "description": "Address line (street number, street name and street type, and political division 1, political division 2 and postal code) used for street level information.\nAdditional secondary information (apartment, suite, floor, etc.)\nApplicable to US and PR only. \nNot returned if user selects the RegionalRequestIndicator.",
-            "type": "string"
+            "type": "object"
           },
           "Region": {
             "description": "Single entry containing in this order  Political Division 2, Political Division 1 and Post Code Primary Low and/or PostcodeExtendedLow.",

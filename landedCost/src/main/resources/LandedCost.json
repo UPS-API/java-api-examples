@@ -8,11 +8,11 @@
   },
   "servers": [
     {
-      "url": "https://wwwcie.ups.com/api/"
+      "url": "https://wwwcie.ups.com/api"
     }
   ],
   "paths": {
-    "/tradeability/{version}/landedcost/quotes": {
+    "/landedcost/{version}/quotes": {
       "post": {
         "summary": "Landed Cost provides an all-inclusive cost estimate of international shipments.",
         "operationId": "LandedCost",
@@ -48,6 +48,13 @@
             },
             "description": "Version of API",
             "required": true
+          },
+          {
+            "in": "header",
+            "name": "AccountNumber",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -56,12 +63,53 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LANDEDCOSTRequestWrapper"
+                "$ref": "#/components/schemas/LandedCostRequest"
               },
               "examples": {
                 "json": {
                   "summary": "A sample JSON request",
-                  "value": "{\r\n  \"LandedCostRequest\": {\r\n    \"EstimateRequest\": {\r\n      \"Shipment\": {\r\n        \"Product\": {\r\n          \"Question\": \"Question1\",\r\n          \"TariffCode\": \"4013200000\"\r\n        },\r\n        \"Question\": {\r\n          \"Answer\": \" \",\r\n          \"Name\": \"Name\"\r\n        }\r\n      },\r\n      \"TransactionDigest\": \"rO0ABXNyABtjb20udXBzLnhvbHQudGEubGMuTENSZXN1bHQOqA+6xY5G9QIAFkQAB2ZyZWlnaHREAAlpbnN1cmFuY2VJAAlpdGVyYXRpb25JAAtudW1TaGlwUXVlc0QADnNoaXBtZW50VGF4RmVlTAAGVXNlcklkdAASTGphdmEvbGFuZy9TdHJpbmc7TAALYWNjdENvdW50cnlxAH4AAUwAC2NvbW1vZGl0aWVzdAAVTGphdmEvdXRpbC9BcnJheUxpc3Q7TAAIY3VycmVuY3lxAH4AAUwAC2Rlc3RDb3VudHJ5cQB+AAFMAAxkZXN0UHJvdmluY2VxAH4AAUwACmZyZWlnaHRDdXJxAH4AAUwADGluc3VyYW5jZUN1cnEAfgABTAAEbW9kZXEAfgABTAANb3JpZ2luQ291bnRyeXEAfgABTAAOb3JpZ2luUHJvdmluY2VxAH4AAUwABnJlZklkMXEAfgABTAAGcmVmSWQycQB+AAFMAAZyZWZJZDNxAH4AAUwAD3NoaXBtZW50QW5zd2Vyc3EAfgACTAARc2hpcG1lbnRRdWVzdGlvbnNxAH4AAkwAB3Vwc0FjY3RxAH4AAXhwQCQAAAAAAABAJAAAAAAAAAAAAAAAAAACAAAAAAAAAAB0AAhBQkMwMDUwMnBzcgATamF2YS51dGlsLkFycmF5TGlzdHiB0h2Zx2GdAwABSQAEc2l6ZXhwAAAAAXcEAAAAAXNyAB5jb20udXBzLnhvbHQudGEubGMuTENDb21tb2RpdHkQ9pLMEPeAxgIAEUQAA1ZBVEQABmR1dGllc0kAB251bVF1ZXNJAAhxdWFudGl0eUQACHN1YlRvdGFsRAAGdGF4RmVlRAAJdW5pdFByaWNlRAAGd2VpZ2h0TAAHYW5zd2Vyc3EAfgACTAAHY291bnRyeXEAfgABTAADY3VycQB+AAFMAAtwcm9kdWN0RGVzY3EAfgABTAAKcHJvZHV0TmFtZXEAfgABTAAJcXVlc3Rpb25zcQB+AAJMAAp0YXJpZmZDb2RlcQB+AAFMAA10YXJpZmZTdWJDb2RlcQB+AAFMAAp3ZWlnaHRVbml0cQB+AAF4cEA1OYXwb2lEQAN/Lkjopx4AAAACAAAAAUBcEhsImgJ1AAAAAAAAAABAWQAAAAAAAD/wAAAAAAAAcHQAAlVTdAADVVNEdAAAcQB+AAtzcQB+AAUAAAACdwQAAAACc3IAI2NvbS51cHMueG9sdC50YS5sYy5MQ1F1ZXN0aW9uQW5zd2Vy5YqWRQGRD3wCAAdJAAlpdGVyYXRpb25JAAR0eXBlTAAGYW5zd2VycQB+AAFMAARuYW1lcQB+AAFMAApvcHRpb25UZXh0cQB+AAFMAAdvcHRpb25zdAAWTGphdmEvdXRpbC9Qcm9wZXJ0aWVzO0wABHRleHRxAH4AAXhwAAAAAAAAAAFwdAAWVU9NX1JFUVVJUkVEX0tJTE9HUkFNU3BwdAAiV2hhdCBpcyB0aGUgcXVhbnRpdHkgZm9yIEtJTE9HUkFNU3NxAH4ADQAAAAAAAAABcHQAHFVPTV9SRVFVSVJFRF9OVU1CRVJfT0ZfSVRFTVNwcHQAKFdoYXQgaXMgdGhlIHF1YW50aXR5IGZvciBOVU1CRVIgT0YgSVRFTVN4dAAKNDAxMzIwMDAwMHEAfgALdAACa2d4dAADRVVSdAACQkVwdAADRVVSdAADRVVSdAACMDF0AAJVU3BwcHBwc3EAfgAFAAAAAncEAAAAAnNxAH4ADQAAAAAAAAADcHQAB0xWU19NT1Nwc3IAFGphdmEudXRpbC5Qcm9wZXJ0aWVzORLQenA2PpgCAAFMAAhkZWZhdWx0c3EAfgAOeHIAE2phdmEudXRpbC5IYXNodGFibGUTuw8lIUrkuAMAAkYACmxvYWRGYWN0b3JJAAl0aHJlc2hvbGR4cD9AAAAAAAAIdwgAAAALAAAACHQAA0FJUnQAA0FpcnQAA1NFQXQAA1NlYXQABFBBUkx0AAtQb3N0IFBhcmNlbHQABExBTkR0AARMYW5kdAAEU1BFRHQAClNwZWVkIFBvc3R0AARJTlRQdAARSW50ZXJuZXQgUHVyY2hhc2V0AARQT1NUdAAEUG9zdHQABENPVVJ0AAdDb3VyaWVyeHB0ABVXaGF0IGlzIHRoZSBNT1MgdHlwZT9zcQB+AA0AAAAAAAAAA3B0ABFMVlNfU0hJUE1FTlRfVFlQRXBzcQB+ACA/QAAAAAAACHcIAAAACwAAAAR0AARHSUZUdAAdR2lmdCBBcnRpY2xlcyAvIEdpZnQgUGFja2FnZXN0AARQRVJTdAARUGVyc29uYWwgQXJ0aWNsZXN0AARDT01NdAAeQXJ0aWNsZXMgd2l0aCBjb21tZXJjaWFsIHZhbHVldAAEU01QTHQAB1NhbXBsZXN4cHQAGldoYXQgaXMgdGhlIFNoaXBtZW50IHR5cGU/eHCCUTYkOhcc2c+r8Sy4Xc9r\"\r\n    },\r\n    \"Request\": {\r\n      \"RequestAction\": \"LandedCost\",\r\n      \"RequestOption\": \"Validate\"\r\n    }\r\n  }\r\n}"
+                  "value": {
+                    "currencyCode": "GBP",
+                    "transID": "325467165",
+                    "allowPartialLandedCostResult": false,
+                    "shipment": {
+                      "id": "ShipmentID83",
+                      "importCountryCode": "GB",
+                      "importProvince": "",
+                      "shipDate": "",
+                      "exportCountryCode": "US",
+                      "incoterms": "",
+                      "shipmentItems": [
+                        {
+                          "commodityId": "1",
+                          "grossWeight": "",
+                          "grossWeightUnit": "",
+                          "priceEach": "125",
+                          "hsCode": "400932",
+                          "quantity": 24,
+                          "UOM": "Each",
+                          "originCountryCode": "GB",
+                          "commodityCurrencyCode": "GBP",
+                          "description": ""
+                        },
+                        {
+                          "commodityId": "4",
+                          "grossWeight": "",
+                          "grossWeightUnit": "",
+                          "priceEach": "0.5",
+                          "hsCode": "",
+                          "quantity": 900,
+                          "UOM": "Each",
+                          "originCountryCode": "GB",
+                          "commodityCurrencyCode": "GBP",
+                          "description": "Cord5mm{PK50Yellow/Red"
+                        }
+                      ],
+                      "transModes": "",
+                      "transportCost": "",
+                      "shipmentType": "Sale"
+                    }
+                  }
                 }
               }
             }
@@ -73,13 +121,80 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LANDEDCOSTResponseWrapper"
+                  "$ref": "#/components/schemas/LandedCostResponse"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "A sample JSON response",
+                    "value": {
+                      "shipment": {
+                        "currencyCode": "GBP",
+                        "id": "ShipmentID83",
+                        "brokerageFeeItems": [
+                          {
+                            "chargeName": "DisbursementFee",
+                            "chargeAmount": 19.05
+                          },
+                          {
+                            "chargeName": "EntryPreparationFee",
+                            "chargeAmount": 5.6
+                          }
+                        ],
+                        "totalBrokerageFees": 24.65,
+                        "totalDuties": 60,
+                        "totalCommodityLevelTaxesAndFees": 0,
+                        "totalShipmentLevelTaxesAndFees": 0,
+                        "totalVAT": 702,
+                        "totalDutyandTax": 762,
+                        "grandTotal": 786.65,
+                        "importCountryCode": "GB",
+                        "shipmentItems": [
+                          {
+                            "commodityId": "1",
+                            "commodityDuty": 60,
+                            "totalCommodityTaxesAndFees": 0,
+                            "commodityVAT": 612,
+                            "totalCommodityDutyandTax": 672,
+                            "commodityCurrencyCode": "GBP",
+                            "isCalculable": true,
+                            "hsCode": "4009320090"
+                          },
+                          {
+                            "commodityId": "4",
+                            "commodityDuty": 0,
+                            "totalCommodityTaxesAndFees": 0,
+                            "commodityVAT": 90,
+                            "totalCommodityDutyandTax": 90,
+                            "commodityCurrencyCode": "GBP",
+                            "isCalculable": true,
+                            "hsCode": "8546901000"
+                          }
+                        ]
+                      },
+                      "alversion": 0,
+                      "dpversion": null,
+                      "transID": "325467165",
+                      "error": null,
+                      "perfStats": {
+                        "absLayerTime": "139",
+                        "fulfillTime": "ThuFeb027:56:53.231-05:002023",
+                        "receiptTime": "ThuFeb027:56:53.091-05:002023"
+                      }
+                    }
+                  }
                 }
               }
             }
           },
           "401": {
-            "description": "Unauthorized Request"
+            "description": "Unauthorized Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Errors"
+                }
+              }
+            }
           }
         }
       }
@@ -104,1011 +219,465 @@
       }
     },
     "schemas": {
-      "LANDEDCOSTRequestWrapper": {
-        "xml": { "name": "LandedCostRequest" },
-        "description": "N/A  ",
-        "maximum": 1,
-        "type": "object",
-        "required": ["LandedCostRequest"],
-        "properties": {
-          "LandedCostRequest": {
-            "$ref": "#/components/schemas/LandedCostRequest"
-          }
-        }
-      },
-      "LANDEDCOSTResponseWrapper": {
-        "xml": { "name": "LandedCostResponse" },
-        "description": "N/A  ",
-        "maximum": 1,
-        "type": "object",
-        "required": ["LandedCostResponse"],
-        "properties": {
-          "LandedCostResponse": {
-            "$ref": "#/components/schemas/LandedCostResponse"
-          }
-        }
-      },
       "LandedCostRequest": {
         "type": "object",
-        "required": ["Request"],
+        "required": [
+          "currencyCode",
+          "transID",
+          "alversion",
+          "shipment"
+        ],
         "properties": {
-          "Request": {
-            "$ref": "#/components/schemas/LandedCostRequest_Request"
+          "currencyCode": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 3,
+            "description": "Specifies the currency of transaction or purchase.",
+            "example": "USD, CAD, EUR"
           },
-          "QueryRequest": {
-            "$ref": "#/components/schemas/LandedCostRequest_QueryRequest"
+          "transID": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 50,
+            "description": "Unique transaction ID for the request.",
+            "example": "LCUAT20220208053048_197985278292494"
           },
-          "EstimateRequest": {
-            "$ref": "#/components/schemas/LandedCostRequest_EstimateRequest"
+          "allowPartialLandedCostResult": {
+            "type": "boolean",
+            "maximum": 1,
+            "description": "This is the optional flag to indicate that partial landed cost  calculations are acceptable to be used by upstream systems. When set to “false”, the system will return an error when at least  one commodity in the shipment is invalid (all or none); no results  will be sent back for that request. When set to “true”, the system will return partial calculations  when applicable Valid values: true = Partial Landed Cost result will return false = All or No result will return - (default)"
           },
-          "ShippingHistoryUserKey": {
-            "description": "Unique key to tag shipments in shipping history. It could be MyUPS registration Number or any unique identifier.",
-            "type": "string"
+          "alversion": {
+            "type": "integer",
+            "maximum": 1,
+            "description": "Version number of the instance that processed this request. This must match the major number of the corresponding ICD version.",
+            "example": "1, 2, 3"
+          },
+          "shipment": {
+            "$ref": "#/components/schemas/LandedCostRequest_Shipment"
           }
         },
-        "xml": { "name": "LandedCostRequest" },
+        "xml": {
+          "name": "LandedCostRequest"
+        },
         "maximum": 1,
         "description": "The root element for the Landed Cost document."
       },
-      "LandedCostRequest_Request": {
+      "LandedCostRequest_Shipment": {
         "type": "object",
         "maximum": 1,
-        "required": ["RequestAction"],
+        "description": "Every Landed Cost request must be based on a shipment.",
+        "required": [
+          "id",
+          "importCountryCode",
+          "exportCountryCode",
+          "shipmentItems"
+        ],
         "properties": {
-          "RequestAction": {
-            "description": "Indicates the action to be taken by the service. Only valid value is: LandedCost.",
-            "type": "string"
+          "id": {
+            "maximum": 1,
+            "maxLength": 100,
+            "type": "string",
+            "description": "Specifies the Shipment ID in the Landed Cost quote. It is an arbitrary string provided by the user of the API that will be  returned with the Landed Cost Quote to indicate which shipment  tariffs apply to. There are similar IDs associated with the Product  and Order objects."
+          },
+          "importCountryCode": {
+            "maximum": 1,
+            "maxLength": 2,
+            "type": "string",
+            "description": "Specifies the Import/Ship To/Destination/Final country of the shipment. Check Country List in the Appendix.",
+            "example": "US, MX, CA"
+          },
+          "importProvince": {
+            "maximum": 1,
+            "type": "string",
+            "maxLength": 100,
+            "description": "Province/State is only supported for a few countries such as Mexico, Canada, etc. Check Province List in the Appendix",
+            "example": "Alberta, Ontario, North Frontier Zone"
+          },
+          "shipDate": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 10,
+            "description": "Default by current date if not provided. Valid date in YYYY-MM-DD format.",
+            "example": "2022-02-28"
+          },
+          "incoterms": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 3,
+            "description": "Supported Incoterm Values: 1. CFR Cost & Freight 2. CIF Cost, Insurance & Freight 3. CIP Carriage and Insurance Paid To 4. CPT Carriage Paid To 5. DAP Delivered At Place 6. DAT Delivered At Terminal 7. DDP Delivered Duty Paid 8. DPU Delivered at Place Unloaded 9. EXW Ex Works 10. FAS Free Alongside Ship 11. FCA Free Carrier 12. FOB Free On Board (Default)",
+            "default": "FOB",
+            "example": "FOB, CFR"
+          },
+          "exportCountryCode": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 2,
+            "description": "Specifies the export/ship from/origin country of the shipment. Check Country List in the Appendix section. Note: Export country code must be different from Import country code",
+            "example": "DE, CN, JP"
+          },
+          "transModes": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 9,
+            "description": "The modes of transportation. [Upper case alphabet]. Supported Values: 1. INT_AIR 2. INT_OCEAN 3. INT_RAIL 4. INT_TRUCK 5. DOM_AIR 6. DOM_OCEAN 7. DOM_RAIL 8. DOM_TRUCK Default value will be varied and based on import country."
+          },
+          "transportCost": {
+            "maximum": 1,
+            "type": "number",
+            "description": "Specifies the Freight charge or transport costs, which are used for tariff calculations. Landed cost result might have some dependency on the freight charges in some countries. Therefore, freight amount should be always provided for accurate Landed Cost result. Allowed value: 1. Any non-negative floating-point number. 2. Numeric value with optional decimal value.",
+            "example": 100.6
+          },
+          "shipmentType": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 35,
+            "description": "Specifies the shipment type such as Gift, Document, Commercial (Sale), etc. Supported Shipment Type: 1. GIFT 2. COMMERCIAL 3. SALE 4. SAMPLE 5. REPAIR 6. RETURN 7. OTHER Default value will be varied and based on import country"
+          },
+          "shipmentItems": {
+            "type": "array",
+            "maximum": 99,
+            "items": {
+              "$ref": "#/components/schemas/Request_ShipmentItems"
+            },
+            "description": "Array of shipment item (commodity) objects that are in a shipment."
           }
-        },
-        "xml": { "name": "Request" },
-        "description": "A container which contains the service requested."
+        }
       },
-      "Request_RequestAction": {
-        "description": "Indicates the action to be taken by the service. Only valid value is: LandedCost.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 13,
-        "maxLength": 13
-      },
-      "LandedCostRequest_QueryRequest": {
+      "Request_ShipmentItems": {
         "type": "object",
-        "required": ["Shipment"],
+        "required": [
+          "commodityId",
+          "priceEach",
+          "commodityCurrencyCode",
+          "quantity",
+          "UOM",
+          "originCountryCode"
+        ],
         "properties": {
-          "Shipment": { "$ref": "#/components/schemas/QueryRequest_Shipment" },
-          "TransactionReferenceID": {
-            "description": "User reference ID.",
-            "type": "string"
+          "commodityId": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 100,
+            "description": "Commodity ID is used to associate tariffs with product in the output. Should be unique for each commodity in a request. It is an arbitrary string provided by the user of the API that will be returned with the Landed Cost Quote to indicate which commodity tariffs apply to."
           },
-          "SuppressQuestionIndicator": {
-            "description": "Contains the indicator to suppress questions\nY-Yes (suppress questions)\nN-No (do not suppress questions)\nIf not set, defaults to �N�",
-            "type": "string"
+          "grossWeight": {
+            "type": "number",
+            "maximum": 1,
+            "description": "Specifies the gross weight of the commodity as any non-negative value.",
+            "example": 10.34
+          },
+          "grossWeightUnit": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 2,
+            "description": "Specifies the units of the gross weight. Required if GrossWeight is used. If GrossWeight is not specified, this value must not be set to anything but null. Supported values: LB, KG",
+            "example": "KG"
+          },
+          "priceEach": {
+            "type": "number",
+            "maximum": 1,
+            "description": "Specifies the price for each commodity unit in the settlement currency. The total price of the entire number of shipmentItems may not exceed 999999999999.99",
+            "example": 346.32
+          },
+          "commodityCurrencyCode": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 3,
+            "description": "Specifies the Currency Code used for commodity price. All commodities must have the same currency code.",
+            "example": "USD, CAD, EUR"
+          },
+          "quantity": {
+            "type": "integer",
+            "maximum": 1,
+            "description": "Specifies the number of product units to be shipped. The total price of the entire number of shipmentItems may not exceed 999999999999.99, 1 or greater than 1"
+          },
+          "UOM": {
+            "type": "string",
+            "maximum": 1,
+            "description": "Specify unit of measure. Check UOM List in the Appendices section",
+            "example": "KILOGRAM, BAG"
+          },
+          "hsCode": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 40,
+            "description": "Specifies a valid HS or HTS code for the shipment’s destination or import country. This field is required if description is not provided. Valid HTS Code with or without periods",
+            "example": "0901.90.00.10"
+          },
+          "description": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 150,
+            "description": "This field is populated with description of the commodity. This field is required if hsCode is not provided."
+          },
+          "originCountryCode": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 2,
+            "description": "Country of Manufacture or origin.",
+            "example": "US, CA, JP, MX"
           }
-        },
-        "xml": { "name": "QueryRequest" },
-        "maximum": 1,
-        "description": "Container for the billing and shipment data. Should be in the first round request of LandedCost. It cannot co-exist with EstimateRequest. If EstimateRequest is not present, this tag must be present."
-      },
-      "QueryRequest_Shipment": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["OriginCountryCode", "DestinationCountryCode", "Product"],
-        "properties": {
-          "OriginCountryCode": {
-            "description": "Two-character ISO country or territory code where the items shipped from. Cannot be the same as destination country or territory code.",
-            "type": "string"
-          },
-          "OriginStateProvinceCode": {
-            "description": "State/Province Code of origin country. Required if the \t\t\torigin country is Canada CA or Brazil BR.",
-            "type": "string"
-          },
-          "DestinationCountryCode": {
-            "description": "Two-character ISO code ISO country or territory code where the items \t\t\tshipped to. Cannot be the same as origin country or territory code.",
-            "type": "string"
-          },
-          "DestinationStateProvinceCode": {
-            "description": "State/Province Code of destination country or territory. Required if \t\t\tthe destination country is Canada CA or Brazil BR.",
-            "type": "string"
-          },
-          "TransportationMode": {
-            "description": "Valid values:\n1 - Air\n2 - Ground\n3 - Rail\n4 -?? Ocean\nIf \t\t\tnot specified, default to Air.",
-            "type": "string"
-          },
-          "FreightCharges": {
-            "$ref": "#/components/schemas/Shipment_FreightCharges"
-          },
-          "AdditionalInsurance": {
-            "$ref": "#/components/schemas/Shipment_AdditionalInsurance"
-          },
-          "TariffCodeAlert": {
-            "description": "Contains the indicator for global Tariff Code Alerts.\n0 = true, send tariff code alerts for all tariff codes in the request.\n1 = false, do not send tariff code alerts for any of the tariff codes in the request.\nThis indicator setting supersedes the TariffCodeAlert settings in individual Product Type elements.\nNote: by setting this value to 1 false, you will not receive Tariff Code Alerts for the products in the request. \nNote: Invalid values will result in the value being set to true.",
-            "type": "string"
-          },
-          "Product": { "$ref": "#/components/schemas/QueryRequest_Shipment_Product" },
-          "ResultCurrencyCode": {
-            "description": "Currency code for the Landed Cost quote. Must be \t\t\tthree-character ISO code.",
-            "type": "string"
-          }
-        },
-        "xml": { "name": "Shipment" },
-        "description": "Container for the shipment data"
-      },
-      "Shipment_OriginCountryCode": {
-        "description": "Two-character ISO country or territory code where the items shipped from. Cannot be the same as destination country or territory code.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 2,
-        "maxLength": 2
-      },
-      "Shipment_OriginStateProvinceCode": {
-        "description": "State/Province Code of origin country. Required if the \t\t\torigin country is Canada CA or Brazil BR.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 2,
-        "maxLength": 2
-      },
-      "Shipment_DestinationCountryCode": {
-        "description": "Two-character ISO code ISO country or territory code where the items \t\t\tshipped to. Cannot be the same as origin country or territory code.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 2,
-        "maxLength": 2
-      },
-      "Shipment_DestinationStateProvinceCode": {
-        "description": "State/Province Code of destination country or territory. Required if \t\t\tthe destination country is Canada CA or Brazil BR.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 2,
-        "maxLength": 2
-      },
-      "Shipment_TransportationMode": {
-        "description": "Valid values:\n1 - Air\n2 - Ground\n3 - Rail\n4 -?? Ocean\nIf \t\t\tnot specified, default to Air.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 1
-      },
-      "Shipment_FreightCharges": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["MonetaryValue"],
-        "properties": {
-          "MonetaryValue": {
-            "description": "The monetary value of the insurance charge for the shipment. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-            "type": "string"
-          },
-          "CurrencyCode": {
-            "description": "Currency code for the transportation charge. Must be \t\t\tthree-character ISO code.",
-            "type": "string"
-          }
-        },
-        "xml": { "name": "FreightCharges" },
-        "description": "Container for the transportation charge for the shipment."
-      },
-      "FreightCharges_MonetaryValue": {
-        "description": "The monetary value of the insurance charge for the shipment. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "FreightCharges_CurrencyCode": {
-        "description": "Currency code for the transportation charge. Must be \t\t\tthree-character ISO code.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 3,
-        "maxLength": 3
-      },
-      "Shipment_AdditionalInsurance": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["MonetaryValue"],
-        "properties": {
-          "MonetaryValue": {
-            "description": "The monetary value of the insurance charge for the shipment.\nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-            "type": "string"
-          },
-          "CurrencyCode": {
-            "description": "Currency code for the insurance charge. Must be\n\t\t\tthree-character ISO code.",
-            "type": "string"
-          }
-        },
-        "xml": { "name": "AdditionalInsurance" },
-        "description": "Container for the insurance charge for the shipment."
-      },
-      "AdditionalInsurance_MonetaryValue": {
-        "description": "The monetary value of the insurance charge for the shipment.\nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "AdditionalInsurance_CurrencyCode": {
-        "description": "Currency code for the insurance charge. Must be\n\t\t\tthree-character ISO code.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 3,
-        "maxLength": 3
-      },
-      "Shipment_TariffCodeAlert": {
-        "description": "Contains the indicator for global Tariff Code Alerts.\n0 = true, send tariff code alerts for all tariff codes in the request.\n1 = false, do not send tariff code alerts for any of the tariff codes in the request.\nThis indicator setting supersedes the TariffCodeAlert settings in individual Product Type elements.\nNote: by setting this value to 1 false, you will not receive Tariff Code Alerts for the products in the request. \nNote: Invalid values will result in the value being set to true.",
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 1
-      },
-      "Shipment_Product": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["TariffCode"],
-        "properties": {
-          "TariffCode": {
-            "description": "Tariff Code of the product.",
-            "type": "string"
-          },
-          "Question": { "$ref": "#/components/schemas/Product_Question" }
-        },
-        "xml": { "name": "Product" },
-        "description": "Container for the questions at the Product level. Must be in \t\t\tthe same order as in the QueryRequest."
-      },
-      "QueryRequest_Shipment_Product": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["TariffInfo","Quantity","UnitPrice"],
-        "properties": {
-          "ProductName": {
-            "$ref": "#/components/schemas/Product_ProductName"
-          },
-          "ProductDescription": {
-            "$ref": "#/components/schemas/Product_ProductDescription"
-          },
-          "TariffInfo": {
-            "$ref": "#/components/schemas/Product_TariffInfo"
-          },
-          "ProductCountryCodeOfOrigin": {
-            "$ref": "#/components/schemas/Product_ProductCountryCodeOfOrigin"
-          },
-          "Quantity": {
-            "$ref": "#/components/schemas/Product_Quantity"
-          },
-          "Weight": {
-            "$ref": "#/components/schemas/Product_Weight"
-          },
-          "UnitPrice": {
-            "$ref": "#/components/schemas/Product_UnitPrice"
-          },
-          "TariffCodeAlert": {
-            "$ref": "#/components/schemas/Product_TariffCodeAlert"
-          }
-
-        },
-        "xml": { "name": "Product" },
-        "description": "Container for the  the Product level. Must be in \t\t\tthe same order as in the QueryRequest."
-      },
-      "Product_ProductName": {
-        "description": "The name of the product",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 50
-      },
-      "Product_ProductDescription": {
-        "description": "The description of the product",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 150
-      },
-      "Product_ProductCountryCodeOfOrigin": {
-        "description": "ISO country or territory code of the country or territory that the tariff\n\t\t\tinformation belongs to.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 2,
-        "maxLength": 2
-      },
-      "Product_TariffInfo": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["TariffCode"],
-        "properties": {
-          "TariffCode": {
-            "description": "Tariff Code of the product. \nValid characters are 0-9 and Decimal Point (\".\"). \nOnly 6 numeric fields will be considered during validation for the minimum length of the Tariff Code.",
-            "type": "string"
-          },
-          "DetailID": {
-            "description": "Additional information on Tariff Code of the product. \nValid characters are 0-9 and Decimal point (�.�). \nThe DetailID is used by TradeAbility to help refine results and should not be reported on official customs documents as part of the Tariff Code.",
-            "type": "string"
-          },
-          "SecondaryTariffCode": {
-            "description": "Secondary Tariff Code of the product. \nValid characters are 0-9 and Decimal point (�.�). \nOnly 6 numeric fields will be considered during validation for the minimum length of the Secondary Tariff Code.",
-            "type": "string"
-          },
-          "SecondaryDetailID": {
-            "description": "Additional information on Secondary Tariff Code of the product. \nValid characters are 0-9 and Decimal Point (�.�). \nThe SecondaryDetailID is used by TradeAbility to help refine results and should not be reported on official customs documents as part of the Tariff Code.",
-            "type": "string"
-          }
-        },
-        "xml": { "name": "TariffInfo" },
-        "description": "A container element which contains the Tariff Code Information."
-      },
-      "TariffInfo_TariffCode": {
-        "description": "Tariff Code of the product. \nValid characters are 0-9 and Decimal Point (\".\"). \nOnly 6 numeric fields will be considered during validation for the minimum length of the Tariff Code.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 6,
-        "maxLength": 40
-      },
-      "TariffInfo_DetailID": {
-        "description": "Additional information on Tariff Code of the product. \nValid characters are 0-9 and Decimal point (�.�). \nThe DetailID is used by TradeAbility to help refine results and should not be reported on official customs documents as part of the Tariff Code.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 40
-      },
-      "TariffInfo_SecondaryTariffCode": {
-        "description": "Secondary Tariff Code of the product. \nValid characters are 0-9 and Decimal point (�.�). \nOnly 6 numeric fields will be considered during validation for the minimum length of the Secondary Tariff Code.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 6,
-        "maxLength": 40
-      },
-      "TariffInfo_SecondaryDetailID": {
-        "description": "Additional information on Secondary Tariff Code of the product. \nValid characters are 0-9 and Decimal Point (�.�). \nThe SecondaryDetailID is used by TradeAbility to help refine results and should not be reported on official customs documents as part of the Tariff Code.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 40
-      },
-      "Product_Quantity": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["Value"],
-        "properties": {
-          "Value": {
-            "description": "Quantity of products. Must be a positive integer.",
-            "type": "string"
-          },
-          "UnitOfMeasure": {
-            "$ref": "#/components/schemas/Quantity_UnitOfMeasure"
-          }
-        },
-        "xml": { "name": "Quantity" },
-        "description": "Container for quantity of products.",
-        "minLength": 1,
-        "maxLength": 5
-      },
-      "Quantity_Value": {
-        "description": "Quantity of products. Must be a positive integer.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 5
-      },
-      "Quantity_UnitOfMeasure": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["UnitCode"],
-        "properties": {
-          "UnitCode": {
-            "description": "Valid values are: lb or kg.",
-            "type": "string"
-          },
-          "UnitDescription": {
-            "description": "Short description of the unit of measurement.",
-            "type": "string"
-          }
-        },
-        "xml": { "name": "UnitOfMeasure" },
-        "description": "Container for the unit of measurement."
-      },
-      "UnitOfMeasure_UnitCode": {
-        "description": "Valid values are: lb or kg.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 2,
-        "maxLength": 2
-      },
-      "UnitOfMeasure_UnitDescription": {
-        "description": "Short description of the unit of measurement.",
-        "maximum": 1,
-        "type": "string"
-      },
-      "Product_UnitPrice": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["MonetaryValue"],
-        "properties": {
-          "MonetaryValue": {
-            "description": "The monetary value of the unit price for the product. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 characters after the decimal point. \nThe total price of this value ... Quantity*product unit price... may not exceed 999999999999.99.",
-            "type": "string"
-          },
-          "CurrencyCode": {
-            "description": "Currency code for the unit price of the product. \nMust be \t\t\tthree-character ISO code.+G35",
-            "type": "string"
-          }
-        },
-        "xml": { "name": "UnitPrice" },
-        "description": "Container for the unit price of the product"
-      },
-      "UnitPrice_MonetaryValue": {
-        "description": "The monetary value of the unit price for the product. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 characters after the decimal point. \nThe total price of this value ... Quantity*product unit price... may not exceed 999999999999.99.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "UnitPrice_CurrencyCode": {
-        "description": "Currency code for the unit price of the product. \nMust be \t\t\tthree-character ISO code.+G35",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 3,
-        "maxLength": 3
-      },
-      "Product_Weight": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["UnitOfMeasure", "Value"],
-        "properties": {
-          "Value": {
-            "description": "The weight value of the product. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 characters after the decimal point.",
-            "type": "string"
-          },
-          "UnitOfMeasure": {
-            "$ref": "#/components/schemas/Weight_UnitOfMeasure"
-          }
-        },
-        "xml": { "name": "Weight" },
-        "description": "Container for product weight."
-      },
-      "Weight_Value": {
-        "description": "The weight value of the product. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 characters after the decimal point.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 17
-      },
-      "Weight_UnitOfMeasure": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["UnitCode"],
-        "properties": {
-          "UnitCode": {
-            "description": "Valid values are: lb or kg.",
-            "type": "string"
-          },
-          "UnitDescription": {
-            "description": "Short description of the unit of measurement.",
-            "type": "string"
-          }
-        },
-        "xml": { "name": "UnitOfMeasure" },
-        "description": "Container for the Unit of Measure of weight"
-      },
-      "Product_TariffCodeAlert": {
-        "description": "Contains the indicator for individual product element Tariff Code Alerts\n0 = true, send tariff code alerts for this products tariff code in the request\n1 = false, do not send tariff code alerts for this products tariff code in the request.\nThis indicator setting is superseded by the TariffCodeAlert settings at the Global/Shipment level. \nNote: Invalid values will result in the value being set to true.",
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 1
-      },
-      "Shipment_ResultCurrencyCode": {
-        "description": "Currency code for the Landed Cost quote. Must be \t\t\tthree-character ISO code.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 3,
-        "maxLength": 3
-      },
-      "QueryRequest_TransactionReferenceID": {
-        "description": "User reference ID.",
-        "maximum": 3,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 35
-      },
-      "QueryRequest_SuppressQuestionIndicator": {
-        "description": "Contains the indicator to suppress questions\nY-Yes (suppress questions)\nN-No (do not suppress questions)\nIf not set, defaults to �N�",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 1
-      },
-      "LandedCostRequest_EstimateRequest": {
-        "type": "object",
-        "required": ["Shipment", "TransactionDigest"],
-        "properties": {
-          "Shipment": {
-            "$ref": "#/components/schemas/EstimateRequest_Shipment"
-          },
-          "TransactionDigest": {
-            "description": "Encoded shipment parameters returned in \t\t\tLandedCostResponse/QueryResponse",
-            "type": "string"
-          }
-        },
-        "xml": { "name": "EstimateRequest" },
-        "maximum": 1,
-        "description": "Container for the answers to the questions from the previous transaction. \nCannot be in the first round request of LandedCost. It cannot co-exist with QueryRequest. If QueryRequest is not present, this tag must be present."
-      },
-      "EstimateRequest_Shipment": {
-        "type": "object",
-        "required": ["Product"],
-        "properties": {
-          "Product": { "$ref": "#/components/schemas/Shipment_Product" },
-          "Question": { "$ref": "#/components/schemas/Shipment_Question" }
-        },
-        "xml": { "name": "Shipment" },
-        "description": "Container for the answers to questions at shipment level \t\t\tand Product level.",
-        "maximum": 1
-      },
-      "Product_TariffCode": {
-        "description": "Tariff Code of the product.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "Product_Question": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["Type", "Text", "Name"],
-        "properties": {
-          "Name": {
-            "description": "The name of the question.",
-            "type": "string"
-          },
-          "Text": { "description": "The question text.", "type": "string" },
-          "Type": {
-            "description": "Values are:\n1 - Question that requires a numeric answer only.\n2 - Question that requires an answer true or false.\n3 � Question that has multiple choice answers and the answers are provided.\nOnly one choice is allowed.",
-            "type": "string"
-          },
-          "Options": { "$ref": "#/components/schemas/Question_Options" }
-        },
-        "xml": { "name": "Question" },
-        "description": "Container for Product questions."
-      },
-      "Question_Name": {
-        "description": "The name of the question.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 100
-      },
-      "Question_Answer": {
-        "description": "Answer to the shipment level question. Valid values:\nType 1 question - numeric value.\nType 2 question - true or false.\nType 3 question - Key of the Answer/Option \nIf this container is not provided, there is not an  answer for the question.",
-        "maximum": 1,
-        "type": "string"
-      },
-      "Shipment_Question": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["Type", "Text", "Name"],
-        "properties": {
-          "Name": {
-            "description": "The name of the question.",
-            "type": "string"
-          },
-          "Text": { "description": "The question text.", "type": "string" },
-          "Type": {
-            "description": "Values are:\n1 - Question that requires a numeric answer only.\n2 - Question that requires an answer true or false.\n3 � Question that has multiple choice answers and the answers are provided.\nOnly one choice is allowed.",
-            "type": "string"
-          },
-          "Options": { "$ref": "#/components/schemas/Question_Options" }
-        },
-        "xml": { "name": "Question" },
-        "description": "Container for shipment level question."
-      },
-      "EstimateRequest_TransactionDigest": {
-        "description": "Encoded shipment parameters returned in \t\t\tLandedCostResponse/QueryResponse",
-        "maximum": 1,
-        "type": "string"
-      },
-      "LandedCostRequest_ShippingHistoryUserKey": {
-        "description": "Unique key to tag shipments in shipping history. It could be MyUPS registration Number or any unique identifier.",
-        "maximum": 1,
-        "type": "string"
+        }
       },
       "LandedCostResponse": {
         "type": "object",
-        "properties": {
-          "QueryResponse": {
-            "$ref": "#/components/schemas/LandedCostResponse_QueryResponse"
-          },
-          "EstimateResponse": {
-            "$ref": "#/components/schemas/LandedCostResponse_EstimateResponse"
-          }
-        },
-        "xml": { "name": "LandedCostResponse" },
-        "description": "A container which contains the service status returned.",
-        "maximum": 1
-      },
-      "LandedCostResponse_QueryResponse": {
-        "type": "object",
-        "required": ["Shipment", "TransactionDigest"],
-        "properties": {
-          "Shipment": { "$ref": "#/components/schemas/QueryResponse_Shipment" },
-          "TransactionDigest": {
-            "description": "Encoded shipment parameters that are required in \t\t\tLandedCostRequest/EstimateRequest.",
-            "type": "string"
-          },
-          "SuppressQuestionIndicator": {
-            "description": "Contains the indicator to suppress questions\nY-Yes (suppress questions)\nN-No (do not suppress questions)\nIf not set, defaults to �N�",
-            "type": "string"
-          }
-        },
-        "xml": { "name": "QueryResponse" },
-        "maximum": 1,
-        "description": "Container for the question, used to give a more accurate landed cost quote. It cannot co-exist with EstimateResponse. \nIf EstimateRespnse is not present, this tag must be present. \nQueryResponse can be returned up to twice before the landed cost quote is given."
-      },
-      "QueryResponse_Shipment": {
-        "type": "object",
-        "required": ["Product"],
-        "properties": {
-          "Product": { "$ref": "#/components/schemas/Shipment_Product" },
-          "Question": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Shipment_Question"
-            }
-          }
-        },
-        "xml": { "name": "Shipment" },
-        "description": "Container for the questions at the Shipment level and Product \t\t\tlevel.",
-        "maximum": 1
-      },
-      "Question_Text": {
-        "description": "The question text.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 100
-      },
-      "Question_Type": {
-        "description": "Values are:\n1 - Question that requires a numeric answer only.\n2 - Question that requires an answer true or false.\n3 � Question that has multiple choice answers and the answers are provided.\nOnly one choice is allowed.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 1
-      },
-      "Question_Options": {
-        "type": "object",
-        "required": ["Option"],
-        "properties": {
-          "Option": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Options_Option"
-            }
-          }
-        },
-        "xml": { "name": "Options" },
-        "description": "Container for the choice of answer. Present when the \t\t\tquestion type is 3.",
-        "maximum": 1
-      },
-      "Options_Option": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["Value", "Key"],
-        "properties": {
-          "Key": {
-            "description": "Key of the answer for question type 3.",
-            "type": "string"
-          },
-          "Value": {
-            "description": "Text for this answer choice",
-            "type": "string"
-          }
-        },
-        "xml": { "name": "Option" },
-        "description": "Container for the choice of answer. Present when the \t\t\tquestion type is 3."
-      },
-      "Option_Key": {
-        "description": "Key of the answer for question type 3.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "Option_Value": {
-        "description": "Text for this answer choice",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 100
-      },
-      "QueryResponse_TransactionDigest": {
-        "description": "Encoded shipment parameters that are required in \t\t\tLandedCostRequest/EstimateRequest.",
-        "maximum": 1,
-        "type": "string"
-      },
-      "QueryResponse_SuppressQuestionIndicator": {
-        "description": "Contains the indicator to suppress questions\nY-Yes (suppress questions)\nN-No (do not suppress questions)\nIf not set, defaults to �N�",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 1
-      },
-      "LandedCostResponse_EstimateResponse": {
-        "type": "object",
-        "required": ["ShipmentEstimate", "TransactionInfo"],
-        "properties": {
-          "TransactionInfo": {
-            "$ref": "#/components/schemas/EstimateResponse_TransactionInfo"
-          },
-          "ShipmentEstimate": {
-            "$ref": "#/components/schemas/EstimateResponse_ShipmentEstimate"
-          },
-          "SuppressQuestionIndicator": {
-            "description": "Contains the indicator to suppress questions\nY-Yes (suppress questions)\nN-No (do not suppress questions)\nIf not set, defaults to �N�",
-            "type": "string"
-          }
-        },
-        "xml": { "name": "EstimateResponse" },
-        "maximum": 1,
-        "description": "Container for landed Cost quote. It cannot co-exist with QueryResponse. If QueryRespnse is not present, this tag must be present.",
-        "minLength": 1,
-        "maxLength": 30
-      },
-      "EstimateResponse_TransactionInfo": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["TransactionCharge", "Time", "Date"],
-        "properties": {
-          "Date": {
-            "description": "Date the transaction is returned to user. \nFormat \t\t\tMM/DD/YYYY",
-            "type": "string"
-          },
-          "Time": {
-            "description": "Time the transaction is returned to user. \nFormat HH24:MM \t\t\tET",
-            "type": "string"
-          },
-          "TransactionCharge": {
-            "$ref": "#/components/schemas/TransactionInfo_TransactionCharge"
-          }
-        },
-        "xml": { "name": "TransactionInfo" },
-        "description": "Container for transaction related information"
-      },
-      "TransactionInfo_Date": {
-        "description": "Date the transaction is returned to user. \nFormat \t\t\tMM/DD/YYYY",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 10,
-        "maxLength": 10
-      },
-      "TransactionInfo_Time": {
-        "description": "Time the transaction is returned to user. \nFormat HH24:MM \t\t\tET",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 8,
-        "maxLength": 8
-      },
-      "TransactionInfo_TransactionCharge": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["CurrencyCode", "MonetaryValue"],
-        "properties": {
-          "MonetaryValue": {
-            "description": "Amount charged for the transaction. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-            "type": "string"
-          },
-          "CurrencyCode": {
-            "description": "Currency code of the transaction charge.",
-            "type": "string"
-          }
-        },
-        "xml": { "name": "TransactionCharge" },
-        "description": "The charge for the successful landed cost transaction \t\t\tthat returns landed cost estimate."
-      },
-      "TransactionCharge_MonetaryValue": {
-        "description": "Amount charged for the transaction. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 13
-      },
-      "TransactionCharge_CurrencyCode": {
-        "description": "Currency code of the transaction charge.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 3,
-        "maxLength": 3
-      },
-      "EstimateResponse_ShipmentEstimate": {
-        "type": "object",
-        "maximum": 1,
         "required": [
-          "CurrencyCode",
-          "TotalLandedCost",
-          "ShipmentCharges",
-          "ProductsCharges"
+          "shipment",
+          "alVersion",
+          "perfStats",
+          "transID"
         ],
         "properties": {
-          "CurrencyCode": {
-            "description": "Currency Code provided by user in the LandedCostRequest/QueryRequest/Shipment/Result Currency. If not specified, it is shipment destination country or territory's currency code.",
-            "type": "string"
-          },
-          "ShipmentCharges": {
-            "$ref": "#/components/schemas/ShipmentEstimate_ShipmentCharges"
-          },
-          "ProductsCharges": {
-            "$ref": "#/components/schemas/ShipmentEstimate_ProductsCharges"
-          },
-          "TotalLandedCost": {
-            "description": "The total Landed Cost ...sum of shipment level charge and all Product level charges. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 characters after the decimal point.",
-            "type": "string"
+          "shipment": {
+            "type": "object",
+            "required": [
+              "currencyCode",
+              "importCountryCode",
+              "id",
+              "brokerageFeeItems",
+              "totalBrokerageFees",
+              "totalDuties",
+              "totalCommodityLevelTaxesAndFees",
+              "totalShipmentLevelTaxesAndFees",
+              "totalVAT",
+              "totalDutyAndTax",
+              "grandTotal",
+              "shipmentItems"
+            ],
+            "description": "Every Landed Cost response must be based on a shipment.",
+            "properties": {
+              "currencyCode": {
+                "type": "string",
+                "maximum": 1,
+                "maxLength": 3,
+                "description": "Specifies the Currency Code set at the commodity level. This currency is applicable for all duty, tax, VAT, and fee at the shipment and commodity level.",
+                "example": "USD, CAD, EUR"
+              },
+              "importCountryCode": {
+                "type": "string",
+                "maximum": 1,
+                "maxLength": 2,
+                "description": "Specifies the Import/Ship To/Destination/Final country of the shipment. Check Country List in the Appendices section.",
+                "example": "US, CA, MX"
+              },
+              "id": {
+                "type": "string",
+                "maximum": 1,
+                "maxLength": 100,
+                "description": "Specifies the Shipment ID in the Landed Cost quote"
+              },
+              "brokerageFeeItems": {
+                "type": "array",
+                "maximum": 1,
+                "items": {
+                  "$ref": "#/components/schemas/brokerageFeeItems"
+                },
+                "description": "An Array of Brokerage fee"
+              },
+              "totalBrokerageFees": {
+                "type": "number",
+                "maximum": 1,
+                "description": "Grand Total of all applicable Brokerage Fees"
+              },
+              "totalDuties": {
+                "type": "number",
+                "maximum": 1,
+                "description": "Total duty amount of this shipment"
+              },
+              "totalCommodityLevelTaxesAndFees": {
+                "type": "number",
+                "maximum": 1,
+                "description": "Total tax and other fees at commodity level"
+              },
+              "totalShipmentLevelTaxesAndFees": {
+                "type": "number",
+                "maximum": 1,
+                "description": "Total tax and other fees at shipment level"
+              },
+              "totalVAT": {
+                "type": "number",
+                "maximum": 1,
+                "description": "Total VAT of this shipment"
+              },
+              "totalDutyAndTax": {
+                "type": "number",
+                "maximum": 1,
+                "description": "Grand Total combined duty, VAT, tax, and other fees of all commodities of this shipment including shipment level taxes and fee"
+              },
+              "grandTotal": {
+                "type": "number",
+                "maximum": 1,
+                "description": "(TotalDutyAndTax+ totalBrokerageFees)"
+              },
+              "shipmentItems": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Response_ShipmentItems"
+                },
+                "maximum": 99,
+                "description": "An Array or List of Landed Cost result for all valid commodities"
+              },
+              "transID": {
+                "type": "string",
+                "maxLength": 50,
+                "description": "An identifier unique to the request"
+              },
+              "perfStats": {
+                "type": "object",
+                "maximum": 1,
+                "required": [
+                  "absLayerTime",
+                  "fulfillTime",
+                  "receiptTime"
+                ],
+                "description": "See ALPerfStats",
+                "properties": {
+                  "absLayerTime": {
+                    "type": "string",
+                    "maximum": 1,
+                    "maxLength": 20,
+                    "description": "Time taken through the abstraction layer in milliseconds"
+                  },
+                  "fulfillTime": {
+                    "type": "string",
+                    "maximum": 1,
+                    "maxLength": 32,
+                    "description": "Request completed time"
+                  },
+                  "receiptTime": {
+                    "type": "string",
+                    "maximum": 1,
+                    "maxLength": 32,
+                    "description": "Request receipt time"
+                  }
+                }
+              },
+              "alVersion": {
+                "type": "integer",
+                "maximum": 1,
+                "maxLength": 10,
+                "description": "Version number of the instance that processed this request. Default by 1"
+              },
+              "errors": {
+                "$ref": "#/components/schemas/Errors"
+              }
+            }
           }
         },
-        "xml": { "name": "ShipmentEstimate" },
-        "description": "Container for the estimated cost"
+        "xml": {
+          "name": "LandedCostResponse"
+        },
+        "maximum": 1
       },
-      "ShipmentEstimate_CurrencyCode": {
-        "description": "Currency Code provided by user in the LandedCostRequest/QueryRequest/Shipment/Result Currency. If not specified, it is shipment destination country or territory's currency code.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 3,
-        "maxLength": 3
-      },
-      "ShipmentEstimate_ShipmentCharges": {
-        "type": "object",
-        "maximum": 1,
-        "required": ["TaxesAndFees", "SubTotal"],
+      "brokerageFeeItems": {
         "properties": {
-          "TaxesAndFees": {
-            "description": "Shipment Level Taxes and Fees. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-            "type": "string"
+          "chargeName": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 50,
+            "description": "Brokerage Charge name this shipment. Possible Values: 1. Entry Preparation Fee 2. Disbursement Fee 3. Additional Line Fee"
           },
-          "AdditionalInsuranceCost": {
-            "description": "Insurance cost value in the result currency. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-            "type": "string"
-          },
-          "TransportationCost": {
-            "description": "Transportation cost value in the result currency. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-            "type": "string"
-          },
-          "SubTotal": {
-            "description": "Shipment level charge... sum of Shipment TaxesAndFees, AddtionalInsuranceCost and TransportationCost. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 characters after the decimal point.",
-            "type": "string"
+          "chargeAmount": {
+            "type": "number",
+            "maximum": 1,
+            "description": "Fee amount for the brokerage charges",
+            "example": 10.56
           }
-        },
-        "xml": { "name": "ShipmentCharges" },
-        "description": "Container for the shipment level cost"
+        }
       },
-      "ShipmentCharges_TaxesAndFees": {
-        "description": "Shipment Level Taxes and Fees. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "ShipmentCharges_AdditionalInsuranceCost": {
-        "description": "Insurance cost value in the result currency. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "ShipmentCharges_TransportationCost": {
-        "description": "Transportation cost value in the result currency. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "ShipmentCharges_SubTotal": {
-        "description": "Shipment level charge... sum of Shipment TaxesAndFees, AddtionalInsuranceCost and TransportationCost. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 characters after the decimal point.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "ShipmentEstimate_ProductsCharges": {
-        "type": "object",
-        "required": ["Product", "ProductsSubTotal"],
+      "Response_ShipmentItems": {
+        "required": [
+          "commodityID",
+          "hsCode",
+          "commodityDuty",
+          "commodityVAT",
+          "totalCommodityDutyAndTax",
+          "commodityCurrencyCode",
+          "isCalculable"
+        ],
         "properties": {
-          "Product": { "$ref": "#/components/schemas/ProductsCharges_Product" },
-          "ProductsSubTotal": {
-            "description": "Sum of all Product level charges.  \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-            "type": "string"
+          "commodityID": {
+            "type": "string",
+            "maximum": 1,
+            "description": "Specifies Commodity Id"
+          },
+          "hsCode": {
+            "type": "string",
+            "maxLength": 40,
+            "maximum": 1,
+            "description": "Specifies the HTS code of the commodity"
+          },
+          "commodityDuty": {
+            "type": "number",
+            "maximum": 1,
+            "description": "Duty amount of this commodity"
+          },
+          "totalCommodityTaxAndFee": {
+            "type": "number",
+            "maximum": 1,
+            "description": "Total tax and other fees of this commodity (excluding Duty and VAT)"
+          },
+          "commodityVAT": {
+            "type": "number",
+            "maximum": 1,
+            "description": "VAT amount of this commodity"
+          },
+          "totalCommodityDutyAndTax": {
+            "type": "number",
+            "maximum": 1,
+            "description": "Total combined duty, VAT, tax and other fees of this commodity"
+          },
+          "commodityCurrencyCode": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 3,
+            "description": "Specifies the Currency Code used for commodity price"
+          },
+          "isCalculable": {
+            "type": "boolean",
+            "maximum": 1,
+            "description": "True/False. Indicator for successful Landed Cost calculation for this commodity",
+            "example": "true, false"
           }
-        },
-        "xml": { "name": "ProductsCharges" },
-        "maximum": 1,
-        "description": "Container for the list of each Product charges and \t\t\tProducts total charges"
+        }
       },
-      "ProductsCharges_Product": {
+      "Errors": {
         "type": "object",
-        "maximum": 1,
-        "required": ["TariffCode", "Charges"],
+        "maximum": 99,
+        "description": "Error code and description",
         "properties": {
-          "TariffCode": {
-            "description": "Tariff Code of the product.",
-            "type": "string"
+          "code": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 20,
+            "description": "Error Code"
           },
-          "Charges": { "$ref": "#/components/schemas/Product_Charges" }
-        },
-        "xml": { "name": "Product" },
-        "description": "Container for each Product cost. In the same sequence as \t\t\tin the QueryRequest."
-      },
-      "Product_Charges": {
-        "type": "object",
-        "maximum": 1,
-        "properties": {
-          "Duties": {
-            "description": "Product duties. Valid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). Limit to 4 digits after the decimal.",
-            "type": "string"
+          "description": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 128,
+            "description": "Description of the error"
           },
-          "TaxesAndFees": {
-            "description": "Product taxes and fees. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-            "type": "string"
+          "message": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 128,
+            "description": "Consumer tailored error message"
           },
-          "VAT": {
-            "description": "Product VAT. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-            "type": "string"
+          "value": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 128,
+            "description": "The value that caused the error."
           },
-          "CostOfGoods": {
-            "description": "Product price unit price * quantity. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-            "type": "string"
-          },
-          "SubTotal": {
-            "description": "The product total cost ...sum of Duties, TaxesAndFees, VAT and CostOfGoods. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 characters after the decimal point.",
-            "type": "string"
+          "field": {
+            "type": "string",
+            "maximum": 1,
+            "maxLength": 256,
+            "description": "The path to the field causing the error as returned from the backend services"
           }
-        },
-        "xml": { "name": "Charges" },
-        "required": ["CostOfGoods", "SubTotal"],
-        "description": "Container for the Product charge"
-      },
-      "Charges_Duties": {
-        "description": "Product duties. Valid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). Limit to 4 digits after the decimal.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "Charges_TaxesAndFees": {
-        "description": "Product taxes and fees. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "Charges_VAT": {
-        "description": "Product VAT. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "Charges_CostOfGoods": {
-        "description": "Product price unit price * quantity. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "Charges_SubTotal": {
-        "description": "The product total cost ...sum of Duties, TaxesAndFees, VAT and CostOfGoods. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 characters after the decimal point.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "ProductsCharges_ProductsSubTotal": {
-        "description": "Sum of all Product level charges.  \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 digits after the decimal.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "ShipmentEstimate_TotalLandedCost": {
-        "description": "The total Landed Cost ...sum of shipment level charge and all Product level charges. \nValid characters are 0-9, Decimal Point (\".\"), and Thousand separator (\",\"). \nLimit to 4 characters after the decimal point.",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 20
-      },
-      "EstimateResponse_SuppressQuestionIndicator": {
-        "description": "Contains the indicator to suppress questions\nY-Yes (suppress questions)\nN-No (do not suppress questions)\nIf not set, defaults to �N�",
-        "maximum": 1,
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 1
+        }
       }
     }
   }

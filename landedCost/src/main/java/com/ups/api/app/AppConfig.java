@@ -26,7 +26,7 @@ public class AppConfig {
 	public static final int SCENARIO_PORPERTY_REQUEST_OPTION_PARAMETER = 2;
 	public static final int SCENARIO_PORPERTY_ADDITIONAL_INFO_PARAMETER = 3;
 
-	public static final String LandedCostSuccess = "LandedCostQueryRequestSuccess";
+	public static final String LandedCostSuccess = "LandedCostRequestSuccess";
 
 	@Value("${api.oauth.partner.client.id}")
 	private String clientID;

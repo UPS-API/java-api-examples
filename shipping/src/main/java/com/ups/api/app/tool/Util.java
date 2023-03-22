@@ -1,13 +1,22 @@
 package com.ups.api.app.tool;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
 import java.util.AbstractMap.SimpleEntry;
+import java.util.Base64;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
-import com.ups.api.app.AppConfig;
 import org.openapitools.oauth.client.ApiClient;
 import org.openapitools.oauth.client.api.OAuthApi;
 import org.openapitools.oauth.client.model.GenerateTokenSuccessResponse;
@@ -16,6 +25,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ups.api.app.AppConfig;
 import com.ups.api.app.ShippingDemo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +36,14 @@ public class Util {
 	static {
 		JSON_OBJECT_TO_TARGET_TYPE
 				.put("\"ShipmentResponse\".\"ShipmentResults\".\"PackageResults\".\"ItemizedCharges\"", API_TYPE.ARRAY);
+		JSON_OBJECT_TO_TARGET_TYPE.put(
+				"\"ShipmentResponse\".\"ShipmentResults\".\"ShipmentCharges\".\"ItemizedCharges\"", API_TYPE.ARRAY);
+		JSON_OBJECT_TO_TARGET_TYPE.put("\"ShipmentResponse\".\"Response\".\"Alert\"", API_TYPE.ARRAY);
+		JSON_OBJECT_TO_TARGET_TYPE.put(
+				"\"ShipmentResponse\".\"ShipmentResults\".\"PackageResults\".\"NegotiatedCharges\".\"ItemizedCharges\"",
+				API_TYPE.ARRAY);
+		JSON_OBJECT_TO_TARGET_TYPE.put("\"ShipmentResponse\".\"ShipmentResults\".\"PackageResults\"", API_TYPE.ARRAY);
+		JSON_OBJECT_TO_TARGET_TYPE.put("\"ShipmentRequest\".\"Shipment\".\"Package\"", API_TYPE.ARRAY);
 	}
 
 	private enum API_TYPE {
@@ -39,8 +57,9 @@ public class Util {
 	private static boolean readExpiryToleranceFromConfig = false;
 
 	private static boolean isTokenExpired() {
-		return( (EXPIRY.get() - new Date().getTime()/1000) - 1 < TOKEN_EXPIRY_TOLERANCE_IN_SEC.get());
+		return ((EXPIRY.get() - new Date().getTime() / 1000) - 1 < TOKEN_EXPIRY_TOLERANCE_IN_SEC.get());
 	}
+
 	public static Map<String, API_TYPE> getJsonToObjectConversionMap() {
 		return Collections.unmodifiableMap(JSON_OBJECT_TO_TARGET_TYPE);
 	}
@@ -53,26 +72,28 @@ public class Util {
 	 * @return
 	 */
 	public static String getAccessToken(final AppConfig appConfig, final RestTemplate restTemplate) {
-		if(!readExpiryToleranceFromConfig) {
+		if (!readExpiryToleranceFromConfig) {
 			TOKEN_EXPIRY_TOLERANCE_IN_SEC.set(appConfig.getTokenExipryToleranceInSec());
 			readExpiryToleranceFromConfig = true;
 		}
 		String accessToken = appConfig.getAccessTokenStore().get(appConfig.getClientID());
-		if(null == accessToken || isTokenExpired()) {
-			synchronized(Util.class) {
-				if(null == accessToken || isTokenExpired()) {
+		if (null == accessToken || isTokenExpired()) {
+			synchronized (Util.class) {
+				if (null == accessToken || isTokenExpired()) {
 					OAuthApi oauthApi = new OAuthApi(new ApiClient(restTemplate));
 					final String encodedClientIdAndSecret = Base64.getEncoder().encodeToString(
-							(appConfig.getClientID() + ':' + appConfig.getSecret()).
-									getBytes(StandardCharsets.UTF_8));
+							(appConfig.getClientID() + ':' + appConfig.getSecret()).getBytes(StandardCharsets.UTF_8));
 					oauthApi.getApiClient().setBasePath(appConfig.getOauthBaseUrl());
-					oauthApi.getApiClient().addDefaultHeader(HttpHeaders.AUTHORIZATION, BASIC_AUTH + encodedClientIdAndSecret);
+					oauthApi.getApiClient().addDefaultHeader(HttpHeaders.AUTHORIZATION,
+							BASIC_AUTH + encodedClientIdAndSecret);
 					log.info("ecnoded clientId and secret: [{}]", encodedClientIdAndSecret);
 
 					try {
-						GenerateTokenSuccessResponse generateAccessTokenResponse = oauthApi.generateToken(CLIENT_CREDENTIALS, null);
+						GenerateTokenSuccessResponse generateAccessTokenResponse = oauthApi
+								.generateToken(CLIENT_CREDENTIALS, null);
 						accessToken = generateAccessTokenResponse.getAccessToken();
-						EXPIRY.set(new Date().getTime()/1000 + Long.parseLong(generateAccessTokenResponse.getExpiresIn()) - 2);
+						EXPIRY.set(new Date().getTime() / 1000
+								+ Long.parseLong(generateAccessTokenResponse.getExpiresIn()) - 2);
 					} catch (Exception ex) {
 						throw new IllegalStateException(ex);
 					}
@@ -83,7 +104,6 @@ public class Util {
 		appConfig.getAccessTokenStore().put(appConfig.getClientID(), accessToken);
 		return accessToken;
 	}
-
 
 	/**
 	 * preparing request from the json file to object
@@ -105,6 +125,21 @@ public class Util {
 		} catch (Exception ex) {
 			throw new RuntimeException("failed to constrcut object from [" + filePath + ']', ex);
 		}
+	}
+
+	public static <T> T createRequestFromJsonFileShipping(final String filePath, final Class<T> requestClass,final AppConfig appConfig) { 
+		 try {
+			 InputStream reqIntStream= ShippingDemo.class.getClassLoader().getResourceAsStream(filePath);
+			 String req = new BufferedReader(
+				      new InputStreamReader(reqIntStream, StandardCharsets.UTF_8))
+				        .lines()
+				        .collect(Collectors.joining("\n"));
+			 T request = Util.jsonResultPreprocess(req, Util.getJsonToObjectConversionMap(), requestClass);
+			return request;
+		} catch (Exception ex) { 
+			throw new RuntimeException("failed to constrcut object from [" + filePath + ']', ex);
+					
+		} 
 	}
 
 	public static void dayRoll(final Calendar startDay, int days) {

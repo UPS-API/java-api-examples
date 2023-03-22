@@ -50,7 +50,7 @@ class ShippingApplicationTests {
 		for(Map.Entry<String, List<String>> entry : appConfig.getScenarioProperties().entrySet()) {
 			Class<?> classType = Class.forName(entry.getValue().get(AppConfig.SCENARIO_PROPERTIES_CLASS_NAME));
 
-			Object request = Util.createRequestFromJsonFile(
+			Object request = Util.createRequestFromJsonFileShipping(
 					entry.getValue().get(AppConfig.SCENARIO_PROPERTIES_JSON_FILE_NAME),
 					SHIPRequestWrapper.class,
 					appConfig);
@@ -63,7 +63,7 @@ class ShippingApplicationTests {
 	@Test
 	void notExistJsonFile() throws ClassNotFoundException {
 		Exception exception = assertThrows(RuntimeException.class, () -> {
-			Util.createRequestFromJsonFile("Non-existing Json file",
+			Util.createRequestFromJsonFileShipping("Non-existing Json file",
 					SHIPRequestWrapper.class,
 					null
 					);
@@ -103,7 +103,7 @@ class ShippingApplicationTests {
 				get(AppConfig.SHIPPING_SUCCESS).
 				get(AppConfig.SCENARIO_PROPERTIES_JSON_FILE_NAME);
 
-		SHIPRequestWrapper shipRequestWrapper = Util.createRequestFromJsonFile(
+		SHIPRequestWrapper shipRequestWrapper = Util.createRequestFromJsonFileShipping(
 				shippingSuccessJsonFileName,
 				SHIPRequestWrapper.class,
 				appConfig);
@@ -117,8 +117,8 @@ class ShippingApplicationTests {
 		assertNotNull( shipResponseWrapper);
 		shipping.processAllResponse(shippingSuccessJsonFileName, shipmentResponse);
 
-		String	trackingNumber = shipmentResponse.getShipmentResults().getPackageResults().getTrackingNumber();
-		String	shipmentIdentificationNumber = shipmentResponse.getShipmentResults().getShipmentIdentificationNumber();
+		String trackingNumber = shipmentResponse.getShipmentResults().getPackageResults().get(0).getTrackingNumber();
+        String shipmentIdentificationNumber = shipmentResponse.getShipmentResults().getShipmentIdentificationNumber();
 
 		VOIDSHIPMENTResponseWrapper voidshipmentResponseWrapper =  shipApi.voidShipment(appConfig.getShippingVersion(),
 				shipmentIdentificationNumber,

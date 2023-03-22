@@ -912,6 +912,10 @@
           "CustomerContext": {
             "description": "The CustomerContext information that is echoed back during response.",
             "type": "string"
+          },
+          "TransactionIdentifier": {
+            "description": "The TransactionIdentifier information that is echoed back during response.",
+            "type": "string"
           }
         },
         "xml": { "name": "TransactionReference" },

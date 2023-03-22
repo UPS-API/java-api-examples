@@ -1,0 +1,24 @@
+{
+    "UploadRequest": {
+        "Request": {
+            "RequestOption": "1",
+            "TransactionReference": {
+                "CustomerContext": "Verify 2 Files get succesfully uploaded"
+            }
+        },
+        "UserCreatedForm": [
+            {
+                "UserCreatedFormFileName": "Test 1",
+                "UserCreatedFormFile": "QmFzZSA2NCBlbmNvZGVkIGRhdGE=",
+                "UserCreatedFormFileFormat": "txt",
+                "UserCreatedFormDocumentType": "001"
+            },
+            {
+              "UserCreatedFormFileName": "Test 2",
+              "UserCreatedFormFile": "QmFzZSA2NCBlbmNvZGVkIGRhdGE=",
+              "UserCreatedFormFileFormat": "txt",
+              "UserCreatedFormDocumentType": "001"
+          }
+        ]
+    }
+  }
