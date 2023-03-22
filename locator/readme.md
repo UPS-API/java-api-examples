@@ -80,13 +80,12 @@ and calling setter to populate the attribute instead.
 
 
 ### Data Schema 
- - [Request Schema LOCATORRequestWrapper](docs/LOCATORRequestWrapper.md)
+ - [Request Schema LocatorRequest](docs/LocatorRequest.md)
  - [Response Schema LOCATORResponseWrapper](docs/LOCATORResponseWrapper.md)
 
 ### Sample Request
 ```json
 {
-    "LocatorRequest": {
         "Request": {
             "TransactionReference": {
                 "CustomerContext": ""
@@ -154,7 +153,6 @@ and calling setter to populate the attribute instead.
         "SortCriteria": {
             "SortType": "01"
         }
-    }
 }
 ```
 ### Sample Response

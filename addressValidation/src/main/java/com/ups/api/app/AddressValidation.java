@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.openapitools.addressValidation.client.ApiClient;
-import org.openapitools.addressValidation.client.api.AddressValidationApi;
 import org.openapitools.addressValidation.client.model.XAVRequestWrapper;
 import org.openapitools.addressValidation.client.model.XAVResponseWrapper;
 import org.springframework.boot.CommandLineRunner;
@@ -16,9 +15,11 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.ups.api.app.tool.Util;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import  com.ups.api.app.tool.AddressValidationApi;
 
 @Component
 @Slf4j
@@ -57,7 +58,7 @@ public class AddressValidation implements CommandLineRunner {
 		}
 	}
 
-	public XAVResponseWrapper sendRequest(final XAVRequestWrapper xavRequestWrapper) {
+	public XAVResponseWrapper sendRequest(final XAVRequestWrapper xavRequestWrapper) throws JsonProcessingException {
 		final String accessToken = Util.getAccessToken(this.appConfig, this.restTemplate);
         AddressValidationApi addressValidationApi = api.get();
         if(null == addressValidationApi) {
@@ -67,9 +68,14 @@ public class AddressValidation implements CommandLineRunner {
         }
 
         addressValidationApi.getApiClient().addDefaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken);
-		return addressValidationApi
+		return Util.jsonResultPreprocess(addressValidationApi
 		.addressValidation(this.appConfig.getAddressValidationReqOption(), this.appConfig.getAddressValidationVersion(),
-				xavRequestWrapper,null,null);
+				xavRequestWrapper,null,null),
+											Util.getJsonToObjectConversionMap(),XAVResponseWrapper.class);
+		/*return addressValidationApi
+		.addressValidation(this.appConfig.getAddressValidationReqOption(), this.appConfig.getAddressValidationVersion(),
+				xavRequestWrapper,null,null);*/
+			
 	}
 	
 	private void cleanup() {

@@ -1,0 +1,71 @@
+{
+  "PreNotificationRequest": {
+    "Request": {
+      "TransactionReference": {
+        "CustomerContext": "",
+        "TransactionIdentifier": ""
+      }
+    },
+    "Shipment": {
+      "ShipperNumber": "<Shipper Number>",
+      "ShipmentIdentificationNumber": "<Shipment Identification Number>",
+      "ShipFromAddress": {
+        "AddressLine": "123 Main St",
+        "City": "Atlanta",
+        "StateProvinceCode": "GA",
+        "PostalCode": "30030",
+        "CountryCode": "GA"
+      },
+      "ShipToAddress": {
+        "AddressLine": "123 Main St",
+        "City": "Atlanta",
+        "StateProvinceCode": "GA",
+        "PostalCode": "30030",
+        "CountryCode": "GA"
+      },
+      "PickupDate": "20171101",
+      "Service": {
+        "Code": "GND",
+        "Description": "Ground"
+      },
+      "RegulationSet": "<Regulation Set>",
+      "Package": {
+        "TrackingNumber": "<Tracking Number>",
+        "PackageWeight": {
+          "UnitOfMeasurement": {
+            "Code": "KGS",
+            "Description": "Kilo"
+          },
+          "Weight": "12"
+        },
+        "TransportationMode": "GND",
+        "VoidIndicator": "",
+        "PackagePoints": "12",
+        "ChemicalRecord": {
+          "ReportableQuantity": "1",
+          "ClassDivisionNumber": "I",
+          "SubRiskClass": "1234",
+          "IDNumber": "<ID Number>",
+          "PackagingGroupType": "0",
+          "Quantity": "1",
+          "UOM": "LBS",
+          "PackagingInstructionCode": "TEST",
+          "EmergencyPhone": "",
+          "EmergencyContact": "",
+          "ProperShippingName": "TEST SHIPPING",
+          "TechnicalName": "",
+          "AdditionalDescription": "",
+          "PackagingType": "",
+          "HazardLabelRequired": "LABEL",
+          "PackagingTypeQuantity": "1",
+          "CommodityRegulatedLevelCode": "LR",
+          "TransportCategory": "0",
+          "TunnelRestrictionCode": "1",
+          "QValue": "0.1",
+          "OverPackedIndicator": "",
+          "AllPackedInOneIndicator": ""
+        }
+      }
+    }
+  }
+}

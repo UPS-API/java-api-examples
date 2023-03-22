@@ -14,7 +14,7 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.openapitools.addressValidation.client.ApiClient;
-import org.openapitools.addressValidation.client.api.AddressValidationApi;
+import com.ups.api.app.tool.AddressValidationApi;
 import org.openapitools.addressValidation.client.model.XAVRequestWrapper;
 import org.openapitools.addressValidation.client.model.XAVResponseWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,9 +104,10 @@ public class AddressValidationAppTest {
 			XAVRequestWrapper.class);
 
     // Get a Address Validation result
-	XAVResponseWrapper xavResponseWrapper = addressValidationApi
+	XAVResponseWrapper xavResponseWrapper = Util.jsonResultPreprocess(addressValidationApi
 	.addressValidation(this.appConfig.getAddressValidationReqOption(), this.appConfig.getAddressValidationVersion(),
-			xavRequestWrapper,null,null);
+			xavRequestWrapper,null,null),
+										Util.getJsonToObjectConversionMap(),XAVResponseWrapper.class);
 
 
 		assertNotNull(xavResponseWrapper);
@@ -131,9 +132,10 @@ public class AddressValidationAppTest {
 			XAVRequestWrapper.class);
 
     // Get a Address Validation result
-	XAVResponseWrapper xavResponseWrapper = addressValidationApi
+	XAVResponseWrapper xavResponseWrapper = Util.jsonResultPreprocess(addressValidationApi
 	.addressValidation(this.appConfig.getAddressValidationReqOption(), this.appConfig.getAddressValidationVersion(),
-			xavRequestWrapper,null,null);
+			xavRequestWrapper,null,null),
+										Util.getJsonToObjectConversionMap(),XAVResponseWrapper.class);
 
 
 		assertNotNull(xavResponseWrapper);
@@ -160,9 +162,10 @@ public class AddressValidationAppTest {
 			XAVRequestWrapper.class);
 
     // Get a Address Validation result
-	XAVResponseWrapper xavResponseWrapper = addressValidationApi
+	XAVResponseWrapper xavResponseWrapper = Util.jsonResultPreprocess(addressValidationApi
 	.addressValidation(this.appConfig.getAddressValidationReqOption(), this.appConfig.getAddressValidationVersion(),
-			xavRequestWrapper,null,null);
+			xavRequestWrapper,null,null),
+										Util.getJsonToObjectConversionMap(),XAVResponseWrapper.class);
 
 
 		assertNotNull(xavResponseWrapper);
@@ -189,9 +192,10 @@ public class AddressValidationAppTest {
 			XAVRequestWrapper.class);
 
     // Get a Address Validation result
-	XAVResponseWrapper xavResponseWrapper = addressValidationApi
+	XAVResponseWrapper xavResponseWrapper = Util.jsonResultPreprocess(addressValidationApi
 	.addressValidation(this.appConfig.getAddressValidationReqOption(), this.appConfig.getAddressValidationVersion(),
-			xavRequestWrapper,null,null);
+			xavRequestWrapper,null,null),
+										Util.getJsonToObjectConversionMap(),XAVResponseWrapper.class);
 
 
 		assertNotNull(xavResponseWrapper);

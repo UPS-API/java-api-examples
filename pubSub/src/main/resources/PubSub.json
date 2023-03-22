@@ -1,0 +1,397 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "PubSub",
+    "description": "The PubSub tracking API is used by high-volume cusomters and third parties while decreasing overall load on the Track API.",
+    "termsOfService": "https://www.ups.com/upsdeveloperkit/assets/html/serviceAgreement.html",
+    "version": "1.0.1"
+  },
+  "externalDocs": {
+    "description": "",
+    "url": ""
+  },
+  "servers": [
+    {
+      "url": "https://wwwcie.ups.com/api/"
+    }
+  ],
+  "tags": [
+    {
+	   "name": "PubSub"
+	}
+  ],
+  "paths": {
+    "/track/{version}/subscription/package": {
+      "post": {
+      "tags": [
+		  "PubSub"
+		],
+        "summary": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version",
+            "schema": {
+              "type": "string",
+              "default": "v1"
+            },
+            "description": "API Version, e.g. v1",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "transID",
+            "schema": {
+              "type": "string"
+            },
+            "description": "An identifier unique to the request.",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "transactionSrc",
+            "schema": {
+              "type": "string",
+              "default": "testing"
+            },
+            "description": "Identifies the client/source application that is calling.",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Accept",
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            },
+            "description": "Value: application/json",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Generate sample code for popular API requests by selecting an example below. To view a full sample request and response, first click \"Authorize\" and enter your application credentials, then populate the required parameters above and click \"Try it out\".",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PubSubTrackingRequest"
+              },
+              "examples": {
+                "1": {
+                  "summary": "A sample JSON request for PubSub Tracking",
+                  "value": {
+                    "countryCode": "US",
+                    "locale": "en_US",
+                    "shipperAccountNumber": "",
+                    "trackingNumberList": [
+                      "1ZCIETST0111111114",
+                      "1ZCIETST0422222228"
+                    ],
+                    "scanPreference": [],
+                    "destination": {
+                      "url": "https://ultraawesome.track.mytrack.net/awesometrack/messages ",
+                      "credential": "MY_ENDPOINT_ACCESS_TOKEN",
+                      "credentialType": "Bearer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PubSubResponseWrapper"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized Request"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth2": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "description": "Find your client_id and client_secret on your app info page. <br/> 1. Once your credentials are entered select \\\"Authorize\\\" and a bearer token will be generated.<br/> 2. Click \\\"Try it out\\\" and enter any required values.<br/> 3. Select an example request to use or provide your own.<br/> 4. Select \\\"Send the request using the values above\\\" to execute your API request.",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://wwwcie.ups.com/security/v1/oauth/token",
+            "scopes": {}
+          }
+        }
+      }
+    },
+    "schemas": {
+      "PubSubTrackingRequest": {
+        "type": "object",
+        "required": [
+          "locale",
+          "trackingNumberList",
+          "destination",
+          "url",
+          "credential",
+          "credentialType"
+        ],
+        "properties": {
+          "locale": {
+            "description": "Locale string that identifies the user's language, region and any special variant preferences that the user wants to see in their user interface.  en US will be the only valid value, and other Locale will be for future use.",
+            "type": "string",
+            "maximum": 1,
+            "minLength": 5,
+            "maxLength": 5
+          },
+          "countryCode": {
+            "description": "Placeholder for future use. \n Leave blank.",
+            "type": "string",
+            "maximum": 1,
+            "minLength": 2,
+            "maxLength": 2
+          },
+          "shipperAccountNumber": {
+            "description": "Placeholder for future use. \n Leave blank.",
+            "type": "string",
+            "maximum": 1,
+            "minLength": 6,
+            "maxLength": 6
+          },
+          "trackingNumberList": {
+            "description": "The tracking numbers for which subscription is requested.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maximum": 100,
+            "maxLength": 34
+          },
+          "scanPreference": {
+            "description": "Placeholder for future use. \n Leave blank.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "destination": {
+            "description": "The destination container related to the subscription endpoint.",
+            "type": "object",
+            "required": ["url", "credential", "credentialType"],
+            "properties": {
+              "url": {
+                "description": "The URL which is used for destination-subscription endpoint, and it has to be available 24/7 or scans that are sent when the client endpoint is unavailable will be lost.",
+                "type": "string",
+                "maximum": 1,
+                "maxLength": 999
+              },
+              "credential": {
+                "description": "The credential used for destination-subscription endpoint.  If for any reason this credential changes then any subscription that was previously sent with the old credential should be resent with the new credential, otherwise scans sent using the old credential will be rejected when sent to the client endpoint and will be lost.",
+                "type": "string",
+                "maximum": 1
+              },
+              "credentialType": {
+                "description": "The type of credential used for destinaton-subscription endpoint",
+                "type": "string",
+                "maximum": 1
+              }
+            }
+          }
+        }
+      },
+      "PubSubResponseWrapper": {
+        "type": "object",
+        "required": ["validTrackingNumbers", "invalidTrackingNumbers"],
+        "properties": {
+          "validTrackingNumbers": {
+            "description": "The valid tracking numbers for which subscription is requested.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maximum": 100
+          },
+          "invalidTrackingNumbers": {
+            "description": "The invalid tracking numbers for which subscription is requested.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maximum": 100
+          }
+        }
+      },
+      "SubscriptionEndpointRequestWrapper": {
+        "type": "object",
+        "required": [
+          "trackingNumber",
+          "localActivityDate",
+          "localActivityTime",
+          "activityLocation",
+          "scheduledDeliveryDate",
+          "actualDeliveryDate",
+          "actualDeliveryTime",
+          "gmtActivityDate",
+          "gmtActivityTime"
+        ],
+        "properties": {
+          "trackingNumber": {
+            "description": "Tracking number of the package",
+            "type": "string",
+            "maximum": 1,
+            "minLength": 34,
+            "maxLength": 34
+          },
+          "localActivityDate": {
+            "description": "Package Local date of Latest Activity. Format (YYYYMMDD)",
+            "type": "string",
+            "maximum": 1,
+            "minLength": 8,
+            "maxLength": 8
+          },
+          "localActivityTime": {
+            "description": "Package Local time of Latest Activity. Format (HHMMSS)",
+            "type": "string",
+            "maximum": 1,
+            "minLength": 6,
+            "maxLength": 6
+          },
+          "activityLocation": {
+            "description": "Container which holds the location where activity occurred.",
+            "type": "object",
+            "properties": {
+              "city": {
+                "description": "City name.  \n Example: RANDALLSTOWN",
+                "type": "string",
+                "maximum": 1
+              },
+              "stateProvince": {
+                "description": "State or Province name \n Example: MD",
+                "type": "string",
+                "maximum": 1
+              },
+              "postalCode": {
+                "description": "Postal code of state or province (if applicable) \n Example: 21133",
+                "type": "string",
+                "maximum": 1
+              },
+              "country": {
+                "description": "Two-digit country code. \n Example: US",
+                "type": "string",
+                "maximum": 1,
+                "minLength": 2,
+                "maxLength": 2
+              },
+              "countryDescription": {
+                "description": "Country description. \n Example: United States",
+                "type": "string",
+                "maximum": 1
+              }
+            }
+          },
+          "activityStatus": {
+            "description": "Container which stores the activityStatusType, activityStatusCode, and activityStatusDescription",
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Status associated to the activity.",
+                "type": "string",
+                "maximum": 1
+              },
+              "code": {
+                "description": "Activity status code associated to the activity.",
+                "type": "string",
+                "maximum": 1
+              },
+              "description": {
+                "description": "Activity status description associated to the activity.",
+                "type": "string",
+                "maximum": 1
+              }
+            }
+          },
+          "scheduledDeliveryDate": {
+            "description": "The LatestPackageScheduledDeliver (SDD or RDD). \n Format: YYYYMMDD",
+            "type": "string",
+            "maximum": 1,
+            "minLength": 8,
+            "maxLength": 8
+          },
+          "actualDeliveryDate": {
+            "description": "PackageDeliveryDate of the package.  \n Format: YYYYMMDD",
+            "type": "string",
+            "maximum": 1,
+            "minLength": 8,
+            "maxLength": 8
+          },
+          "actualDeliveryTime": {
+            "description": "The packageDeliveryTime description",
+            "type": "string",
+            "maximum": 1,
+            "minLength": 6,
+            "maxLength": 6
+          },
+          "gmtActivityDate": {
+            "description": "GMT Date. \n Format: YYYYMMDD",
+            "type": "string",
+            "maximum": 1,
+            "minLength": 8,
+            "maxLength": 8
+          },
+          "gmtActivityTime": {
+            "description": "GMT Time. \n Format: HHMMSS",
+            "type": "string",
+            "maximum": 1,
+            "minLength": 6,
+            "maxLength": 6
+          }
+        }
+      },
+      "ErrorResponseWrapper": {
+        "type": "object",
+        "required": ["response"],
+        "properties": {
+          "response": {
+            "description": "The error response containing any errors that occurred.",
+            "type": "object",
+            "required": ["errors"],
+            "properties": {
+              "errors": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                },
+                "required": ["code", "message"],
+                "properties": {
+                  "code": {
+                    "description": "The error code.",
+                    "type": "string",
+                    "maximum": 1,
+                    "maxLength": 10
+                  },
+                  "message": {
+                    "description": "The error message.",
+                    "type": "string",
+                    "maximum": 1,
+                    "maxLength": 1000
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

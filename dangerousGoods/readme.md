@@ -80,18 +80,16 @@ and calling setter to populate the attribute instead.
 ```
 > The sendRequest function creates a ChemicalReferenceData api object and set the access token expiry tolerance if it haven't created one yet as well as populating with a valid access token. A Wrapper with ChemicalReferenceData response  will be returned from backend server providing the Chemical details,Quantity limit and other regulation details. 
 ### Data Schema 
- - [Request Schema DANGEROUSGOODSUTILITYRequestWrapper](docs/DANGEROUSGOODSUTILITYRequestWrapper.md)
+ - [Request Schema ChemicalReferenceDataRequest](docs/ChemicalReferenceDataRequest.md)
  - [Response Schema DANGEROUSGOODSUTILITYResponseWrapper](docs/DANGEROUSGOODSUTILITYResponseWrapper.md)
 
 
 ### Sample Request
 ```json
 {
-  "ChemicalReferenceDataRequest": {
     "IDNumber": "<ID Number>",
     "ProperShippingName": "<Shipping Name>",
     "ShipperNumber": "<Shipper Number>"
-  }
 }
 ```
 ### Sample Response

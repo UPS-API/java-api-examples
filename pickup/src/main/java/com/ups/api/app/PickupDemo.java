@@ -2,10 +2,10 @@ package com.ups.api.app;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.ups.api.app.tool.PickupApi;
 import com.ups.api.app.tool.Util;
 import lombok.extern.slf4j.Slf4j;
 import org.openapitools.pickup.client.ApiClient;
-import org.openapitools.pickup.client.api.PickupApi;
 import org.openapitools.pickup.client.model.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.http.HttpHeaders;
@@ -74,10 +74,10 @@ public class PickupDemo implements CommandLineRunner {
                 }
                 processAllResponse(entry.getKey(), pickupCreationResponseWrapper.getPickupCreationResponse());
             } catch (HttpClientErrorException httpClientException) {
-                log.warn(SCENARIO_NAME_LOG_FORMAT, "VoidShipmentResponseSucess");
+                log.warn(SCENARIO_NAME_LOG_FORMAT, entry.getKey());
                 log.warn("Http exception - " + httpClientException.getStatusCode(), httpClientException);
             } catch (Exception ex) {
-                log.warn(SCENARIO_NAME_LOG_FORMAT, "VoidShipmentResponseSucess");
+                log.warn(SCENARIO_NAME_LOG_FORMAT, entry.getKey());
                 applicationErrorHandler(ex);
             } finally {
                 cleanup();
@@ -107,10 +107,10 @@ public class PickupDemo implements CommandLineRunner {
 
                 processAllResponse(entry.getKey(), pickupServCenterResponseWrapper.getPickupGetServiceCenterFacilitiesResponse());
             } catch (HttpClientErrorException httpClientException) {
-                log.warn(SCENARIO_NAME_LOG_FORMAT, "VoidShipmentResponseSucess");
+                log.warn(SCENARIO_NAME_LOG_FORMAT, entry.getKey());
                 log.warn("Http exception - " + httpClientException.getStatusCode(), httpClientException);
             } catch (Exception ex) {
-                log.warn(SCENARIO_NAME_LOG_FORMAT, "VoidShipmentResponseSucess");
+                log.warn(SCENARIO_NAME_LOG_FORMAT, entry.getKey());
                 applicationErrorHandler(ex);
             } finally {
                 cleanup();
@@ -141,10 +141,10 @@ public class PickupDemo implements CommandLineRunner {
                                 transId, appConfig.getTransactionSrc());
                 processAllResponse(entry.getKey(), pickupResponseWrapper.getPickupRateResponse());
             } catch (HttpClientErrorException httpClientException) {
-                log.warn(SCENARIO_NAME_LOG_FORMAT, "VoidShipmentResponseSucess");
+                log.warn(SCENARIO_NAME_LOG_FORMAT, entry.getKey());
                 log.warn("Http exception - " + httpClientException.getStatusCode(), httpClientException);
             } catch (Exception ex) {
-                log.warn(SCENARIO_NAME_LOG_FORMAT, "VoidShipmentResponseSucess");
+                log.warn(SCENARIO_NAME_LOG_FORMAT, entry.getKey());
                 applicationErrorHandler(ex);
             } finally {
                 cleanup();
@@ -161,17 +161,18 @@ public class PickupDemo implements CommandLineRunner {
         try {
             final PickupApi pickupApi = initializePickupApi(restTemplate, appConfig);
             final String transId = UUID.randomUUID().toString().replace("-", "");
-            PICKUPPendingResponseWrapper pickupPendingResponseWrapper =
+            PICKUPPendingResponseWrapper pickupPendingResponseWrapper =Util.jsonResultPreprocess(
                     pickupApi.pickupPendingStatus(appConfig.getAccountNumber(),
                             appConfig.getPickupVersion(),
-                            appConfig.GET_PICKUP_TYPE, transId, appConfig.getTransactionSrc());
+                            appConfig.GET_PICKUP_TYPE, transId, appConfig.getTransactionSrc()),
+                            Util.getJsonToObjectConversionMap(), PICKUPPendingResponseWrapper.class);
             processAllResponse("PickupPendingStatusResponseSuccess",
                     pickupPendingResponseWrapper.getPickupPendingStatusResponse());
         } catch (HttpClientErrorException httpClientException) {
-            log.warn(SCENARIO_NAME_LOG_FORMAT, "VoidShipmentResponseSucess");
+            log.warn(SCENARIO_NAME_LOG_FORMAT, "PickupPendingStatusResponseSuccess");
             log.warn("Http exception - " + httpClientException.getStatusCode(), httpClientException);
         } catch (Exception ex) {
-            log.warn(SCENARIO_NAME_LOG_FORMAT, "VoidShipmentResponseSucess");
+            log.warn(SCENARIO_NAME_LOG_FORMAT, "PickupPendingStatusResponseSuccess");
             applicationErrorHandler(ex);
         } finally {
             cleanup();
@@ -195,10 +196,10 @@ public class PickupDemo implements CommandLineRunner {
             processAllResponse("PickupCancelResponseSuccess",
                     pickupCancelResponseWrapper.getPickupCancelResponse());
         } catch (HttpClientErrorException httpClientException) {
-            log.warn(SCENARIO_NAME_LOG_FORMAT, "VoidShipmentResponseSucess");
+            log.warn(SCENARIO_NAME_LOG_FORMAT, "PickupCancelResponseSuccess");
             log.warn("Http exception - " + httpClientException.getStatusCode(), httpClientException);
         } catch (Exception ex) {
-            log.warn(SCENARIO_NAME_LOG_FORMAT, "VoidShipmentResponseSucess");
+            log.warn(SCENARIO_NAME_LOG_FORMAT, "PickupCancelResponseSuccess");
             applicationErrorHandler(ex);
         } finally {
             cleanup();
@@ -222,10 +223,10 @@ public class PickupDemo implements CommandLineRunner {
             processAllResponse("PickupGetPoliticalDivision1ListResponseSuccess",
                     pickupGetPoliticalDivision1List.getPickupGetPoliticalDivision1ListResponse());
         } catch (HttpClientErrorException httpClientException) {
-            log.warn(SCENARIO_NAME_LOG_FORMAT, "VoidShipmentResponseSucess");
+            log.warn(SCENARIO_NAME_LOG_FORMAT, "PickupGetPoliticalDivision1ListResponseSuccess");
             log.warn("Http exception - " + httpClientException.getStatusCode(), httpClientException);
         } catch (Exception ex) {
-            log.warn(SCENARIO_NAME_LOG_FORMAT, "VoidShipmentResponseSucess");
+            log.warn(SCENARIO_NAME_LOG_FORMAT, "PickupGetPoliticalDivision1ListResponseSuccess");
             applicationErrorHandler(ex);
         } finally {
             cleanup();
