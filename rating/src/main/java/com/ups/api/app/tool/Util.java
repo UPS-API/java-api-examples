@@ -110,6 +110,7 @@ public class Util {
 		JSON_OBJECT_TO_TARGET_TYPE.put("\"RateResponse\".\"RatedShipment\".\"ItemizedCharges\"", API_TYPE.ARRAY);
 		JSON_OBJECT_TO_TARGET_TYPE.put("\"RateResponse\".\"RatedShipment\".\"RatedPackage\"", API_TYPE.ARRAY);
 		JSON_OBJECT_TO_TARGET_TYPE.put("\"RateResponse\".\"RatedShipment\".\"RatedShipmentAlert\"", API_TYPE.ARRAY);
+		JSON_OBJECT_TO_TARGET_TYPE.put("\"RateResponse\".\"RatedShipment\".\"RatedPackage\".\"NegotiatedCharges\".\"ItemizedCharges\"", API_TYPE.ARRAY);
 	}
 	
 	private enum API_TYPE { ARRAY }

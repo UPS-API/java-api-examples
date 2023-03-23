@@ -5436,7 +5436,6 @@
         "required": [
           "ModifierType",
           "ModifierDesc",
-          "CurrencyCode",
           "Amount"
         ],
         "properties": {
@@ -5476,7 +5475,10 @@
         "type": "object",
         "properties": {
           "ItemizedCharges": {
-            "$ref": "#/components/schemas/NegotiatedCharges_ItemizedCharges"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NegotiatedCharges_ItemizedCharges"
+            }
           }
         },
         "xml": {
