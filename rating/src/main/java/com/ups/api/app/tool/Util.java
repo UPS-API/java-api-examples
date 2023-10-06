@@ -55,7 +55,7 @@ public class Util {
 																					getBytes(StandardCharsets.UTF_8));
 					oauthApi.getApiClient().setBasePath(appConfig.getOauthBaseUrl());
 					oauthApi.getApiClient().addDefaultHeader(HttpHeaders.AUTHORIZATION, BASIC_AUTH + encodedClientIdAndSecret);
-					log.info("ecnoded clientId and secret: [{}]", encodedClientIdAndSecret);
+					log.info("encoded clientId and secret: [{}]", encodedClientIdAndSecret);
 					
 					try {
 						GenerateTokenSuccessResponse generateAccessTokenResponse = oauthApi.generateToken(CLIENT_CREDENTIALS, null);
