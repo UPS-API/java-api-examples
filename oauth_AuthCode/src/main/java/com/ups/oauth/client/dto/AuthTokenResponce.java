@@ -114,5 +114,20 @@ public class AuthTokenResponce {
 	public void setRefresh_token_issued_at(String refresh_token_issued_at) {
 		this.refresh_token_issued_at = refresh_token_issued_at;
 	}
-
+	
+	public String toString()
+	{
+		return System.lineSeparator() + "token_type = " + getToken_type()
+				+ System.lineSeparator() + "issued_at = " + getIssued_at()		
+				+ System.lineSeparator()  + "client_id = " + getClient_id()
+				+ System.lineSeparator()  + "access_token = " + getAccess_token()
+				+ System.lineSeparator()  + "scope = " + getScope()
+				+ System.lineSeparator()  + "expires_in = " + getExpires_in()
+				+ System.lineSeparator()  + "refresh_count = " + getRefresh_count()
+				+ System.lineSeparator()  + "refresh_token_expires_in = " + getRefresh_token_expires_in()
+				+ System.lineSeparator()  + "refresh_token_status = " + getRefresh_token_status()
+				+ System.lineSeparator()  + "refresh_token = " + getRefresh_token()
+				+ System.lineSeparator()  + "refresh_token_issued_at = " + getRefresh_token_issued_at();
+				
+	}
 }
