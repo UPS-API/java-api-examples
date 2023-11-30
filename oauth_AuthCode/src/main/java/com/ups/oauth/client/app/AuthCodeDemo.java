@@ -69,11 +69,7 @@ public class AuthCodeDemo implements CommandLineRunner  {
 	 */
 	public void authorizeClient(String clientId, String redirectUri) {	
 
-		log.info("AuthCodeDemo::run:authorizeClient");
-		
-	//	getUUID();
-
-		
+		log.info("AuthCodeDemo::run:authorizeClient");		
 		AuthorizeClientResponse authorizeClientResponse = null;
 		try {
 			HttpClient httpClient = HttpClient.newBuilder().build();
@@ -219,43 +215,6 @@ public class AuthCodeDemo implements CommandLineRunner  {
 			log.info ("Refresh token is not available at this time, please try again later.");
 		}   
 	}
-	
-	//////////////////////////////////////////
-public void getUUID() {
-	
-			
-		log.info("AuthCodeDemo::run:getUUID");
-
-		var httpClient = HttpClient.newBuilder().build();		
-		String authStr = appConfig.getClientId() + ":" + appConfig.getSecretId();
-		String base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());		
-
-		HttpRequest request = HttpRequest.newBuilder().
-				uri(URI.create("https://onlinetoolss.ups.com/profile/v1/siteidentifier/GG"))
-				.header("Content-Type", "application/x-www-form-urlencoded")
-				.header("Accept", "application/x-www-form-urlencoded")				
-				.header("transactionId", "testing")
-				.header("transactionSrc", "gg")
-				.header("userName", "upswwedev")
-				.header("Password", "Password1@")	
-				.build();
-
-		try {
-			HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());	
-			log.info("getUUID Respone = " + response.toString());	
-			
-			
-			
-		} catch (Exception e) {		
-			e.printStackTrace();
-			log.info ("getUUID token is not available at this time, please try again later.");
-		}   
-	}
-	
-	
-	
-	
-	/////////////////////////////////////////
 }
 
 
