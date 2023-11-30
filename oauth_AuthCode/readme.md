@@ -38,7 +38,25 @@ mvn clean package
 - Run the project that is generated in the <project home>/target directory.
 
 ```sh
-java -jar oauth_AuthCode-x.x.x.jar
+Authorize the user
+java -jar oauth_AuthCode-x.x.x.jar 1 
+Once logged in the flow will return to the redirect URL of the client.
+The client then has to get the code from the URL https://<your application>?code=<your code>&scope=read&state=test
+
+Generate a token
+java -jar oauth_AuthCode-x.x.x.jar 2 <your code> from the previous step
+Both an access_token and a refresh_token will be returned in the response
+"access_token": "<token>",
+"refresh_token": "<refresh token>",
+The access Token is valid for 4 hours.
+If you wish to generate a token that is valid for 60 days you will need to generate  refresh token.
+
+Generate a refresh token
+java -jar oauth_AuthCode-x.x.x.jar 3 <refresh token> from the previous step.
+Again, both an access_token and the refresh_token will be returned in the response, however the new token is valid for 60 days
+"access_token": "<token>",
+"refresh_token": "<refresh token>",
+
 ```
 - Check the console for the application's REST response.
 
@@ -46,77 +64,157 @@ java -jar oauth_AuthCode-x.x.x.jar
 There are 3 noticable class in this tutorial, namely com.ups.oauth.client.controller.ClientController and com.ups.oauth.client.service.ClientServiceImpl. The ClientController class is a for declaring rest method and ClientServiceImpl is written bussiness logic for calling UPS rest service like validating client,generate JWT token and refresh token based generate JWT token.
 
 
-> validating client.
+> uthorizing client.
 
 ```java
-public LassoRedirectModel getValidateClient(String clientId, String redirectUri) {
+	public void authorizeClient(String clientId, String redirectUri) {	
 
-        HttpHeaders headers = new HttpHeaders();
+		log.info("AuthCodeDemo::run:authorizeClient");
+		
+		AuthorizeClientResponse authorizeClientResponse = null;
+		try {
+			HttpClient httpClient = HttpClient.newBuilder().build();
+			HashMap<String, String> params = new HashMap<>();
+			params.put("client_id", appConfig.getClientId());
+			params.put("redirect_uri", appConfig.getRedirectUrl());
+			params.put("response_type", appConfig.getCode());
+			params.put("state", appConfig.getState());
+			params.put("scope", appConfig.getScope());			
 
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        HttpEntity<Void> entity = new HttpEntity<>(headers);
-        Map<String, String> params = new HashMap<>();
-        params.put("client_id", clientId);
-        params.put("redirect_uri", redirectUri);
+			String finalValidateClientUrl = appConfig.getAuthorizeUrl() + "?client_id=" + appConfig.getClientId() + "&redirect_uri="
+					+ URLEncoder.encode(appConfig.getRedirectUrl(), StandardCharsets.UTF_8) + "&response_type="+ appConfig.getCode() + "&state=" + appConfig.getState()
+					+ "&scope=" + appConfig.getScope();
+			
+			HttpRequest request = HttpRequest.newBuilder().uri(URI.create(finalValidateClientUrl))
+					.header("Content-Type", "application/x-www-form-urlencoded")		
+					.build();
+					
+			HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+			
+			java.net.http.HttpHeaders headers = response.headers();	
+			
+			int status = response.statusCode();
+			log.info("AuthCodeDemo::authorizeClient:status = " + status);
+			
+			if (status == 302) {
+				authorizeClientResponse = new AuthorizeClientResponse(headers.firstValue​("location").toString(),
+						headers.firstValue​("appname").toString(), headers.firstValue​("displayname").toString());
+				if (authorizeClientResponse.getLocation().equalsIgnoreCase("https://www.ups.com/error.page"))
+				{					
+					log.info("Authorize client is not available at this time, please try again later.");
+					log.info(authorizeClientResponse.getLocation());
+				}
+				else {				
+					log.info(authorizeClientResponse.toString());
+				}
+			} else if (status == 400 || status == 401) {
+				ErrorResponse errorResponse = new ErrorResponse(response.statusCode(),
+						headers.firstValue​("errorcode").toString(),
+						headers.firstValue​("errordescription").toString());
+			} else {
+				log.info("status = " + status);
+				log.info("Authorize client is not available at this time, please try again later.");
+			}	
 
-        String finalValidateClientUrl = validateClientUrl + "?client_id=" + clientId + "&redirect_uri=" + redirectUri;
 
-        log.info("url client validation api :- {}", finalValidateClientUrl);
-        ResponseEntity<ValidateClientResponse> res = restTemplate.exchange(finalValidateClientUrl, HttpMethod.GET,
-        entity, ValidateClientResponse.class, params);
-        String callbackURL =null;
-
-        ValidateClientResponse validateClient = res.getBody();
-
-        if(null != validateClient  && null != validateClient.getLassoRedirectURL() && null !=validateClient.getType()) {
-        callbackURL = validateClient.getLassoRedirectURL() + "?client_id=" + clientId + "&redirect_uri="
-        + redirectUri + "&response_type=code&scope=read&&type=" + validateClient.getType();
-
-        }
-        LassoRedirectModel lassoRedirectModel = new LassoRedirectModel();
-        lassoRedirectModel.setLassoRedirectURL(callbackURL);
-        return lassoRedirectModel;
-
-        }
+		} catch (Exception e) {			
+			log.info("Authorize client is not available at this time, please try again later.");
+		}		
+	}
 ```
 > generate auth code base JWT token.
 
 ```java
-public AuthTokenResponce genToken(String code) {
+	public void genToken(String code) {
+		
+		var httpClient = HttpClient.newBuilder().build();
+		String authStr = appConfig.getClientId() + ":" + appConfig.getSecretId();			
+		String base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());			
 
-        String authStr = clientId + ":" + secretId;
-        String base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        headers.add("Authorization", "Basic " + base64Creds);
-        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-        map.add("grant_type", "authorization_code");
-        map.add("code", code);
-        map.add("redirect_uri", redirectUrl);
-        HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(map, headers);
-        ResponseEntity<AuthTokenResponce> res = restTemplate.postForEntity(tokenUrl, entity, AuthTokenResponce.class);
-        return res.getBody();
+		HashMap<String, String> params = new HashMap<>();
+		params.put("grant_type", "authorization_code");
+		params.put("code", code);
+		params.put("redirect_uri", appConfig.getRedirectUrl());
 
-        }
+		String query = params.keySet().stream()
+				.map(key -> key + "=" + URLEncoder.encode(params.get(key), StandardCharsets.UTF_8))
+				.collect(Collectors.joining("&")); 
+
+		HttpRequest request = HttpRequest.newBuilder()
+				.POST(HttpRequest.BodyPublishers.ofString(query))
+				.uri(URI.create(appConfig.getTokenUrl()))
+				.header("Content-Type", "application/x-www-form-urlencoded")
+				.header("x-merchant-id", "")
+				.header("Authorization", "Basic " + base64Creds)
+				.build();
+
+		try {
+			HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+			int status = response.statusCode();					
+			if (status == 200) 	{
+				ObjectMapper mapper = new ObjectMapper();
+				AuthTokenResponce authTokenResponce = mapper.readValue(response.body(), AuthTokenResponce.class);
+				log.info("authTokenResponce = " + authTokenResponce.toString());	    		
+			} else if (status == 400 || status == 401 || status == 403 || status == 429) {	  
+				String err = response.body();	    			 
+				ErrorResponse errorResponse = new ErrorResponse(status, err.substring(err.indexOf("\":[{\"code\":\"") + 12, err.indexOf("\",\"")),  err.substring(err.indexOf(",\"message\":\"") + 12, err.indexOf("\"}]}")));
+				log.info(errorResponse.toString());	    			 
+
+			} else {
+				log.info("status = " + status);
+				log.info("Generate token is not available at this time, please try again later.");
+			}
+		} catch (Exception e) {
+			log.info("Generate token is not available at this time, please try again later.");
+		}   
+	}
+
 
 ```
 
 > generate JWT token based on refresh token.
 
 ```java
-public AuthTokenResponce refreshToken(String token) {
+	public void refreshToken(String token) {
+		
+		log.info("AuthCodeDemo::run:refreshToken");
 
-		String authStr = clientId + ":" + secretId;
-		String base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-		headers.add("Authorization", "Basic " + base64Creds);
-		MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-		map.add("grant_type", "refresh_token");
-		map.add("refresh_token", token);
-		HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(map, headers);
-		ResponseEntity<AuthTokenResponce> res = restTemplate.postForEntity(refreshUrl, entity, AuthTokenResponce.class);
-		return res.getBody();
+		var httpClient = HttpClient.newBuilder().build();		
+		String authStr = appConfig.getClientId() + ":" + appConfig.getSecretId();
+		String base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());		
+		HashMap<String, String> params = new HashMap<>();
+		params.put("grant_type", "refresh_token");
+		params.put("refresh_token", token);
+
+		String form = params.keySet().stream()
+				.map(key -> key + "=" + URLEncoder.encode(params.get(key), StandardCharsets.UTF_8))
+				.collect(Collectors.joining("&"));
+
+		HttpRequest request = HttpRequest.newBuilder()
+				.POST(HttpRequest.BodyPublishers.ofString(form))
+				.uri(URI.create(appConfig.getRefreshUrl()))
+				.header("Content-Type", "application/x-www-form-urlencoded")
+				.header("Authorization", "Basic " + base64Creds)
+				.build();
+
+		try {
+			HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());					
+			int status = response.statusCode();				
+			if (status == 200) {
+				ObjectMapper mapper = new ObjectMapper();
+				AuthTokenResponce authTokenResponce = mapper.readValue(response.body(), AuthTokenResponce.class);
+				log.info("authTokenResponce = " + authTokenResponce.toString());	    		
+			} else if (status == 400 || status == 401 || status == 403 || status == 429) {	    		
+				String err = response.body();	    			 
+				ErrorResponse errorResponse = new ErrorResponse(status, err.substring(err.indexOf("\":[{\"code\":\"") + 12, err.indexOf("\",\"")),  err.substring(err.indexOf(",\"message\":\"") + 12, err.indexOf("\"}]}")));
+				log.info(errorResponse.toString());	   
+			} else {
+				log.info("status = " + status);
+				log.info ("Refresh token is not available at this time, please try again later.");
+			}
+		} catch (Exception e) {					
+			log.info ("Refresh token is not available at this time, please try again later.");
+		}   
 	}
 
 ```
