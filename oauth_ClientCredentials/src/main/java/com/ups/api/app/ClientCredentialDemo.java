@@ -3,7 +3,7 @@ package com.ups.api.app;
 
 import com.ups.oauth.client.ApiClient;
 import com.ups.oauth.client.api.OAuthApi;
-import com.ups.oauth.client.model.GenerateTokenSuccessResponse;
+import com.ups.oauth.client.model.TokenSuccessResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -18,9 +18,8 @@ import java.util.Date;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Component
-@Slf4j
 @AllArgsConstructor
-
+@Slf4j
 public class ClientCredentialDemo implements CommandLineRunner {
 
     RestTemplate restTemplate;
@@ -34,16 +33,16 @@ public class ClientCredentialDemo implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        String token = getAccessToken(appConfig, restTemplate);
-        log.info("access token [{}]", token);
+        getAccessToken(appConfig, restTemplate);
     }
 
     private static boolean isTokenExpired() {
         return ((EXPIRY.get() - new Date().getTime() / 1000) - 1 < TOKEN_EXPIRY_TOLERANCE_IN_SEC.get());
     }
 
-    public static String getAccessToken(final AppConfig appConfig, final RestTemplate restTemplate) {
+    public static void getAccessToken(final AppConfig appConfig, final RestTemplate restTemplate) {
 
+    	TokenSuccessResponse generateAccessTokenResponse = null;
         if (!readExpiryToleranceFromConfig) {
             TOKEN_EXPIRY_TOLERANCE_IN_SEC.set(appConfig.getTokenExipryToleranceInSec());
             readExpiryToleranceFromConfig = true;
@@ -58,10 +57,10 @@ public class ClientCredentialDemo implements CommandLineRunner {
                                     getBytes(StandardCharsets.UTF_8));
                     oauthApi.getApiClient().setBasePath(appConfig.getOauthBaseUrl());
                     oauthApi.getApiClient().addDefaultHeader(HttpHeaders.AUTHORIZATION, BASIC_AUTH + encodedClientIdAndSecret);
-                    log.info("ecnoded clientId and secret: [{}]", encodedClientIdAndSecret);
+                    log.info("ecnoded clientId and secret: [{}]", encodedClientIdAndSecret);      
 
                     try {
-                        GenerateTokenSuccessResponse generateAccessTokenResponse = oauthApi.generateToken(CLIENT_CREDENTIALS, null);
+                        generateAccessTokenResponse = oauthApi.createToken(CLIENT_CREDENTIALS, null);  
                         accessToken = generateAccessTokenResponse.getAccessToken();
                         EXPIRY.set(new Date().getTime() / 1000 + Long.parseLong(generateAccessTokenResponse.getExpiresIn()) - 2);
                     } catch (HttpClientErrorException httpClientException) {
@@ -72,15 +71,11 @@ public class ClientCredentialDemo implements CommandLineRunner {
                 }
             }
         }
-        log.info("access token [{}], expiry [{}]", accessToken, EXPIRY.get());
+        log.info("access token [{}], expiry [{}]", generateAccessTokenResponse, EXPIRY.get());
         appConfig.getAccessTokenStore().put(appConfig.getClientID(), accessToken);
-        return accessToken;
     }
 
     private static void applicationErrorHandler(Exception ex) {
         log.warn("failed to complete request", ex);
     }
-
-
-
 }
